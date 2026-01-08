@@ -1,0 +1,25 @@
+# Variáveis de ambiente
+.env
+.env.*
+!.env.example
+
+# Dependências (Node.js)
+node_modules/
+
+# Arquivos JSON (configurações, dados, etc)
+*.json
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Cache e build
+dist/
+build/
+.cache/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
