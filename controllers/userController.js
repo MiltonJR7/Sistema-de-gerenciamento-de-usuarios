@@ -3,7 +3,7 @@ import UserModel from "../models/userModel.js";
 
 export default class UserController {
     loginView(req, res) {
-        res.render('login/loginPage');
+        res.render('Login/loginPage');
     }
 
     async login(req, res) {
@@ -24,7 +24,7 @@ export default class UserController {
     }
 
     registerView(req, res) {
-        res.render('register/registerPage');
+        res.render('Register/registerPage');
     }
 
     async register(req, res) {
