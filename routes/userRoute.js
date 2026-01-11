@@ -9,4 +9,5 @@ route.get('/login', controller.loginView);
 route.post('/login', controller.login);
 
 route.get('/register', controller.registerView);
+route.post('/register', controller.register);
 export default route;

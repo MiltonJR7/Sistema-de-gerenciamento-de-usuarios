@@ -22,6 +22,31 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
         if(listaValidar.length == 0) {
 
+            let obj = {
+                nome: nome.value,
+                email: email.value,
+                senha: senha.value
+            }
+
+            fetch('/register', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(obj)
+            })
+            .then((res)=> {
+                return res.json();
+            })
+            .then((corpo)=> {
+                if(corpo.ok) {
+                    window.location.href = "/login";
+                } else {
+                    window.location.reload();
+                    alert('falhou foi mal ae erro de DEV KKK');
+                }
+            })
+
         } else {
             for(let i = 0; i < listaValidar.length; i++) {
                 listaValidar[i].style.borderColor = "red";

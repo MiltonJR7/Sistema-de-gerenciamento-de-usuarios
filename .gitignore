@@ -6,9 +6,6 @@
 # Dependências (Node.js)
 node_modules/
 
-# Arquivos JSON (configurações, dados, etc)
-*.json
-
 # Logs
 *.log
 npm-debug.log*
