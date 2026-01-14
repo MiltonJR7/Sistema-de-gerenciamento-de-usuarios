@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             fetch('/login', {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(obj)
             })
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             })
             .then((corpo)=> {
                 if(corpo.ok) {
-                    window.location.href = "/";
+                    window.location.href = "/dashboard";
                 } else {
                     email.value = "";
                     senha.value = "";

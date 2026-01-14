@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/css/dashstyle.css">
+</head>
+
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- Shield icon -->
+          <svg class="icon" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2l8 4v6c0 5-3.2 9.4-8 10-4.8-.6-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M9.6 12.1l1.6 1.7 3.5-3.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div>
+          <h1>Dashboard</h1>
+          <p>Admin</p>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Navegação">
+        <button type="button" class="navlink" data-target="page-users" aria-current="page">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M16 20c0-2.2-1.8-4-4-4s-4 1.8-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M12 12a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M20 20c0-2-1.3-3.6-3.1-3.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M16.7 6.2a3.2 3.2 0 0 1 0 6.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          Usuários
+        </button>
+
+        <button type="button" class="navlink" data-target="page-products" aria-current="false">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 8.5l-9 4-9-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 8.5V17a2 2 0 0 0 1.2 1.8l7.8 3.2 7.8-3.2A2 2 0 0 0 21 17V8.5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M12 12.5v9.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M21 7l-9-4-9 4 9 4 9-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+          Produtos
+        </button>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <h2 id="pageTitle">Usuários</h2>
+
+        <div class="actions">
+          <button type="button" class="btn" id="themeToggle" aria-label="Alternar tema">
+            <svg class="icon" id="themeIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M21 13.2A7.7 7.7 0 0 1 10.8 3 8.6 8.6 0 1 0 21 13.2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+            Tema
+          </button>
+        </div>
+      </header>
+
+      <section class="page" id="page-users">
+        <div class="grid">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Usuários cadastrados</h3>
+                <p class="card-subtitle">Área reservada para gráfico e contador (integrar via EJS e seu script de gráfico).</p>
+              </div>
+
+              <div class="metric" aria-label="Contador de usuários cadastrados">
+                <strong id="usersCount">
+                  <p>Em progresso...</p>
+                </strong>
+                <span>Total</span>
+              </div>
+            </div>
+
+            <div class="chart-shell" aria-label="Container do gráfico de usuários">
+              <div class="hint">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 19V5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M4 19h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M8 15l3-4 3 2 5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Renderize seu gráfico aqui (sem dados estáticos)
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Buscar usuários</h3>
+                <p class="card-subtitle">A busca aqui é apenas UI. Você conecta a lógica no seu backend quando quiser.</p>
+              </div>
+            </div>
+
+            <div class="search-row">
+              <div class="search" role="search">
+                <input
+                  type="search"
+                  id="usersSearch"
+                  name="usersSearch"
+                  placeholder="Pesquisar usuário..."
+                  autocomplete="off"
+                />
+                <button type="button" aria-label="Procurar">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/>
+                    <path d="M20 20l-3.2-3.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="list-slot">
+              Slot reservado para listagem via EJS.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-products" hidden>
+        <div class="grid">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Produtos cadastrados</h3>
+                <p class="card-subtitle">Área reservada para gráfico e contador (integrar via EJS e seu script de gráfico).</p>
+              </div>
+
+              <div class="metric" aria-label="Contador de produtos cadastrados">
+                <strong id="productsCount">
+                  <p>Em progresso...</p>
+                </strong>
+                <span>Total</span>
+              </div>
+            </div>
+
+            <div class="chart-shell" aria-label="Container do gráfico de produtos">
+              <div class="hint">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 19V5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M4 19h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M8 14v-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M12 14V8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M16 14v-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                Renderize seu gráfico aqui (sem dados estáticos)
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Buscar produtos</h3>
+                <p class="card-subtitle">A busca aqui é apenas UI. Você conecta a lógica no seu backend quando quiser.</p>
+              </div>
+            </div>
+
+            <div class="search-row">
+              <div class="search" role="search">
+                <input
+                  type="search"
+                  id="productsSearch"
+                  name="productsSearch"
+                  placeholder="Pesquisar produto..."
+                  autocomplete="off"
+                />
+                <button type="button" aria-label="Procurar">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/>
+                    <path d="M20 20l-3.2-3.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="list-slot">
+              Slot reservado para listagem via EJS.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const navLinks = document.querySelectorAll(".navlink");
+      const pages = document.querySelectorAll(".page");
+      const pageTitle = document.getElementById("pageTitle");
+
+      function setActivePage(targetId) {
+        pages.forEach(p => p.hidden = (p.id !== targetId));
+
+        navLinks.forEach(btn => {
+          const isActive = btn.dataset.target === targetId;
+          btn.setAttribute("aria-current", isActive ? "page" : "false");
+        });
+
+        if (targetId === "page-users") pageTitle.textContent = "Usuários";
+        if (targetId === "page-products") pageTitle.textContent = "Produtos";
+      }
+
+      navLinks.forEach(btn => {
+        btn.addEventListener("click", () => setActivePage(btn.dataset.target));
+      });
+
+      const html = document.documentElement;
+      const themeToggle = document.getElementById("themeToggle");
+      const themeIcon = document.getElementById("themeIcon");
+
+      function setTheme(theme) {
+        html.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+
+        if (theme === "dark") {
+          themeIcon.innerHTML = '<path d="M21 13.2A7.7 7.7 0 0 1 10.8 3 8.6 8.6 0 1 0 21 13.2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>';
+        } else {
+          themeIcon.innerHTML = '' +
+            '<path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" stroke="currentColor" stroke-width="1.6"/>' +
+            '<path d="M12 2v2.2M12 19.8V22M2 12h2.2M19.8 12H22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M19.8 4.2l-1.6 1.6M5.8 18.2l-1.6 1.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>';
+        }
+      }
+
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "light" || savedTheme === "dark") {
+        setTheme(savedTheme);
+      } else {
+        setTheme("dark");
+      }
+
+      themeToggle.addEventListener("click", () => {
+        const current = html.getAttribute("data-theme");
+        setTheme(current === "dark" ? "light" : "dark");
+      });
+
+      setActivePage("page-users");
+    })();
+  </script>
+</body>
+</html>

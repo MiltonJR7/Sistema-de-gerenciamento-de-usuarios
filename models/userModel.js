@@ -76,4 +76,31 @@ export default class UserModel {
       client.release();
     }
   }
+
+  async obterID(id) {
+    const client = await pool.connect();
+
+    try {
+      const sql = `
+      SELECT usu_id, usu_nome, usu_email, usu_hash_senha, usu_ativo
+      FROM tb_usuario
+      WHERE usu_id = ?
+    `
+    const rows = await client.query(sql);
+
+    if(rows.length > 0) {
+      let row = rows[0];
+      return new UserModel(
+        row["usu_id"],
+        row["usu_nome"],
+        row["usu_email"],
+        row["usu_hash_senha"],
+        row["usu_ativo"]
+      )
+    }
+    return null;
+    } finally {
+      client.release();
+    }
+  }
 }

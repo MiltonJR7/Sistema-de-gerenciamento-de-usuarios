@@ -16,8 +16,8 @@ body {
   display: grid;
   place-items: center;
   padding: 24px;
-  background: radial-gradient(circle at top, rgba(255,255,255,0.9), rgba(240,244,255,0.95)),
-              linear-gradient(135deg, #dbeafe, #f5f3ff, #ecfeff);
+  background: radial-gradient(circle at top, rgba(181, 195, 233, 0.9), rgba(67, 102, 199, 0.95)),
+              linear-gradient(135deg, #5d5fd6, #5030f3c2, #3270f5);
 }
 
 .formLogin {
@@ -87,7 +87,7 @@ body {
   font-weight: 700;
   font-size: 15px;
   color: #ffffff;
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  background: linear-gradient(135deg, #69a053, #42b35e);
   box-shadow: 0 14px 28px rgba(37, 99, 235, 0.22);
   transition: transform 0.12s ease, filter 0.2s ease, box-shadow 0.2s ease;
 }
@@ -102,7 +102,7 @@ body {
   font-weight: 700;
   font-size: 15px;
   color: #ffffff;
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  background: linear-gradient(135deg, #69a053, #42b35e);
   box-shadow: 0 14px 28px rgba(37, 99, 235, 0.22);
   transition: transform 0.12s ease, filter 0.2s ease, box-shadow 0.2s ease;
 }
