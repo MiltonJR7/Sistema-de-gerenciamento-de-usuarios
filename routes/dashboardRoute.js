@@ -8,4 +8,6 @@ const route = express.Router();
 
 route.get('/', authAdmin, controller.dashboardView);
 route.post('/delete', authAdmin, controller.delete);
+
+
 export default route;

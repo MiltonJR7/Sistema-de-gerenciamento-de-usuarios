@@ -146,6 +146,7 @@ export default class UserModel {
     } finally {
       client.release();
     }
+    
   }
 
   async deleteUser(id) {

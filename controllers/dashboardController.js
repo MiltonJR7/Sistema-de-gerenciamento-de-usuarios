@@ -19,6 +19,7 @@ export default class DashboardController {
 
     async delete(req, res) {
 
+        
         try {
             let idUsuario = req.body.obj;
 

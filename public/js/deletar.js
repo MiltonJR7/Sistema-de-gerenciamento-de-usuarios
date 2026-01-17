@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
     function deletar(id) {
         
+        
         try {
             if(!id) return;
 
