@@ -107,34 +107,34 @@ body {
     gap: 15px;
 }
 
-.icon-btn{
-  position: relative;
-  width: 44px;
-  height: 44px;
-  border: none;
-  background-color: #f5f5f5;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 18px;
-  color: var(--text-dark);
-  transition: all 0.3s;
+.icon-btn {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--text-dark);
+    transition: all 0.3s;
 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-  padding: 0;
-  line-height: 1;
+    padding: 0;
+    line-height: 1;
 }
 
-.icon-btn i{
-  display: block;
-  line-height: 1;
+.icon-btn i {
+    display: block;
+    line-height: 1;
 }
 
 
-a.icon-btn{
-  text-decoration: none;
+a.icon-btn {
+    text-decoration: none;
 }
 
 .nav-bar {
@@ -2354,4 +2354,71 @@ a.icon-btn{
     .footer-column h4 {
         font-size: 12px;
     }
+}
+
+
+.profile-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-menu .dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    min-width: 180px;
+    padding: 10px;
+    border-radius: 14px;
+    background: var(--bg-card, #fff);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .12);
+    border: 1px solid rgba(0, 0, 0, .06);
+
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: .18s ease;
+    z-index: 999;
+}
+
+.profile-menu:hover .dropdown,
+.profile-menu:focus-within .dropdown {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.profile-menu .dropdown a {
+    display: block;
+    padding: 10px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #1f1f1f;
+    font-size: 14px;
+}
+
+.profile-menu .dropdown a:hover {
+    background: rgba(11, 94, 215, .08);
+}
+
+.profile-menu .dropdown hr {
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, .08);
+    margin: 8px 0;
+}
+
+.profile-menu .dropdown a.danger {
+    color: #b42318;
+}
+
+.profile-menu .dropdown a.danger:hover {
+    background: rgba(180, 35, 24, .08);
+}
+
+.profile-menu::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:100%;
+  width:220px;
+  height:14px;
 }

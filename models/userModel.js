@@ -69,7 +69,7 @@ export default class UserModel {
         }
     }
 
-    async registarUsuario() {
+    async registrarUsuario() {
         const client = await pool.connect();
 
         try {
@@ -118,7 +118,7 @@ export default class UserModel {
                 usuario.usuNome = rows[i].usu_nome;
                 usuario.usuEmail = rows[i].usu_email;
                 usuario.usuAtivo = rows[i].usu_ativo;
-                usuario.usuCriacao = rows[i].usu_criacao;
+                usuario.usuDate = rows[i].usu_criacao;
                 usuario.perTipo = rows[i].per_tipo;
 
                 listaUsuario.push(usuario);

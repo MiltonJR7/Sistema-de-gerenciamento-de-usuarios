@@ -34,8 +34,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
                     return alert('ERRO: CEP INVALIDO');
                 }
             }
-        } else {
-            return alert('ERRO: CEP VAZIO');
         }
     })
     

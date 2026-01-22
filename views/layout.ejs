@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="stylesheet" href="/css/layoutStyle.css"/>
+    <link rel="stylesheet" href="/css/layoutStyle.css" />
 </head>
 
 <body>
@@ -31,17 +31,26 @@
                     <button><i class="fas fa-search"></i></button>
                 </div>
 
-                <div class="header-icons">
-                    <button class="icon-btn wishlist-btn">
-                        <i class="far fa-heart"></i>
-                    </button>
-                    <a href="/perfil" class="icon-btn" aria-label="Ir para perfil">
+                <div class="profile-menu">
+                    <button class="icon-btn">
                         <i class="far fa-user"></i>
-                    </a>
-                    <button class="icon-btn cart-btn">
-                        <i class="fas fa-shopping-cart"></i>
                     </button>
+
+                    <div class="dropdown" role="menu" aria-label="Menu do perfil">
+                        <% if(!user || user === "") { %>
+                            <a href="/login" role="menuitem">Login</a>
+                            <a href="/register" role="menuitem">Criar conta</a>
+                        <% } else if(perfil === 1) { %>
+                            <a href="/perfil" role="menuitem">Perfil</a>
+                            <a href="/dashboard" role="menuitem">Dashboard</a><hr>
+                            <a href="/logout" role="menuitem" class="danger">Sair</a>
+                        <% } else { %>
+                            <a href="/perfil" role="menuitem">Perfil</a><hr>
+                            <a href="/logout" role="menuitem" class="danger">Sair</a>
+                        <% } %>
+                    </div>
                 </div>
+
             </div>
         </div>
     </header>

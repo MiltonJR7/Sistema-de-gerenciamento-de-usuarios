@@ -52,7 +52,7 @@ export default class UserController {
             user.usuSenha = senha;
             user.usuGenero = genero;
 
-            const result = await user.registarUsuario();
+            const result = await user.registrarUsuario();
 
             if(result) return res.json({ ok: true });
             return res.status(400).json({ ok: false })

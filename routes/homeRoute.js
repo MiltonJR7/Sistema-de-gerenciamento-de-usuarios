@@ -12,4 +12,5 @@ const route = express.Router();
 route.get('/', authPublic, controller.homeView);
 route.get('/logout', controllerUser.logout);
 route.get('/perfil', auth, controller.perfilView);
+route.post('/perfil', auth, controller.perfilAddress);
 export default route;

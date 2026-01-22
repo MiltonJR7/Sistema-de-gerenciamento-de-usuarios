@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Usuários</title>
     <link rel="stylesheet" href="/css/dashStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body data-theme="light">
     <!-- Header -->
@@ -49,11 +50,15 @@
     <!-- Sidebar -->
     <aside class="sidebar">
         <nav class="sidebar-nav">
-            <a href="dashboard.html" class="nav-item active">
+            <a href="#" class="nav-item active">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                     <path d="M16.667 17.5v-1.667a3.333 3.333 0 0 0-3.334-3.333H6.667a3.333 3.333 0 0 0-3.334 3.333V17.5M10 9.167A3.333 3.333 0 1 0 10 2.5a3.333 3.333 0 0 0 0 6.667z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 <span>Usuários</span>
+            </a>
+            <a href="/" class="nav-item">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <span>Home</span>
             </a>
         </nav>
 
@@ -106,24 +111,49 @@
                     <table class="data-table">
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Nome</th>
                                 <th>Email</th>
-                                <th>Gênero</th>
                                 <th>Status</th>
-                                <th class="actions-col">Ações</th>
+                                <th class="actions-col" colspan="2">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td colspan="5" class="empty-state">
-                                    <div class="empty-content">
-                                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
-                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                        <p>Nenhum usuário cadastrado</p>
-                                    </div>
-                                </td>
-                            </tr>
+                            <% for(let i = 0; i < lista.length; i++) { %>
+                                <% if(lista[i].length === 0) { %>
+                                    <tr>
+                                        <td colspan="6" class="empty-state">
+                                            <div class="empty-content">
+                                                <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                                <p>Nenhum usuário cadastrado</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <% } else { %>
+                                    <tr>
+                                        <td><%= lista[i].usuID %></td>
+                                        <td><%= lista[i].usuNome %></td>
+                                        <td><%= lista[i].usuEmail %></td>
+                                        <td>
+                                            <% if(lista[i].usuAtivo === "S") { %>
+                                                <span class="usuarioAtivo">ATIVO</span>
+                                            <% } else { %>
+                                                <span class="usuarioInativo">INATIVO</span>
+                                            <% } %>
+                                        </td>
+                                        <td>
+                                            <button class="btnEditar">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </button>
+                                            <button class="btnDeletar">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                <% } %>
+                            <% } %>
                         </tbody>
                     </table>
                 </div>

@@ -619,3 +619,91 @@ button {
         font-size: 13px;
     }
 }
+
+td button {
+    background-color: #fff;
+    border: none;
+    padding: 8px 12px;
+    margin: 4px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    transition: all 0.3s ease;
+}
+
+.btnEditar {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btnEditar i {
+    font-size: 18px;
+}
+
+.btnEditar:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+.btnDeletar {
+    background-color: #f44336;
+    color: white;
+}
+
+.btnDeletar i {
+    font-size: 18px;
+}
+
+.btnDeletar:hover {
+    background-color: #e53935;
+    transform: scale(1.1);
+}
+
+td button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+    td button {
+        padding: 6px 10px;
+    }
+}
+
+.usuarioAtivo {
+    background-color: #4CAF50;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.usuarioAtivo:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.usuarioInativo {
+    background-color: #f44336;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.usuarioInativo:hover {
+    background-color: #e53935;
+    transform: scale(1.05);
+}
