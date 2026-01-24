@@ -62,26 +62,35 @@
                     <form class="perfil-form">
                         <div class="perfil-form-group">
                             <label for="nome" class="perfil-form-label">Nome</label>
-                            <input type="text" id="nome" class="perfil-form-control" placeholder="Seu nome completo" value="<%= lista.usu_nome %>"/>
+                            <input type="text" id="nome" class="perfil-form-control" placeholder="Seu nome completo" value="<%= lista.usu_nome %>" maxlength="100"/>
                         </div>
 
                         <div class="perfil-form-group">
                             <label for="email" class="perfil-form-label">E-mail</label>
-                            <input type="email" id="email" class="perfil-form-control" placeholder="seu@email.com" value="<%= lista.usu_email %>"/>
+                            <input type="email" id="email" class="perfil-form-control" placeholder="seu@email.com" value="<%= lista.usu_email %>" maxlength="100"/>
                         </div>
 
                         <div class="perfil-form-group">
                             <label for="genero" class="perfil-form-label">Gênero</label>
                             <select id="genero" class="perfil-form-control">
-                                <option value="">Selecione</option>
-                                <option value="masculino">Masculino</option>
-                                <option value="feminino">Feminino</option>
-                                <option value="outro">Outro</option>
+                                <% if(lista.usu_genero === "masculino") { %>
+                                    <option value="<%= lista.usu_genero %>"><%= lista.usu_genero %></option>
+                                    <option value="feminino">feminino</option>
+                                    <option value="outro">outro</option>
+                                <% } else if(lista.usu_genero === "feminino") { %>
+                                    <option value="<%= lista.usu_genero %>"><%= lista.usu_genero %></option>
+                                    <option value="masculino">masculino</option>
+                                    <option value="outro">outro</option>
+                                <% } else { %>
+                                    <option value="<%= lista.usu_genero %>"><%= lista.usu_genero %></option>
+                                    <option value="masculino">masculino</option>
+                                    <option value="feminino">feminino</option>
+                                <% } %>
                             </select>
                         </div>
 
                         <div class="perfil-actions">
-                            <button type="button" class="btn btn-primary-soft">
+                            <button type="button" class="btn btn-primary-soft" id="btnAlterar">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round">
@@ -133,7 +142,7 @@
                             <div class="col-md-4">
                                 <label class="form-label" for="numeroInput">Número</label>
                                 <input id="numeroInput" name="numero" type="text" class="form-control soft-control"
-                                    placeholder="Ex, 123, 12A" />
+                                    placeholder="Ex, 123, 12A" maxlength="7" />
                             </div>
 
                             <div class="col-md-8">
@@ -261,3 +270,4 @@
 
 <script src="/js/apiViacep.js"></script>
 <script src="/js/register.js"></script>
+<script src="/js/alterar.js"></script>

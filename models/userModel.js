@@ -125,7 +125,6 @@ export default class UserModel {
         } finally {
             client.release();
         }
-
     }
 
     async listarUsuarioPeloID(id) {
@@ -162,6 +161,19 @@ export default class UserModel {
         try {
             const sql = "delete from tb_usuario where usu_id = $1";
             const result = await client.query(sql, [id]);
+            return result;
+        } finally {
+            client.release();
+        }
+    }
+
+    async alterarUser(id) {
+        const client = await pool.connect();
+
+        try {
+            const sql = "update tb_usuario set usu_nome = $1, usu_email = $2, usu_genero = $3 where usu_id = $4";
+            const values = [ this.#usuNome, this.#usuEmail, this.#usuGenero, id ];
+            const result = await client.query(sql, values);
             return result;
         } finally {
             client.release();

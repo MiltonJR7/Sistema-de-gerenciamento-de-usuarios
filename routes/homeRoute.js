@@ -13,4 +13,5 @@ route.get('/', authPublic, controller.homeView);
 route.get('/logout', controllerUser.logout);
 route.get('/perfil', auth, controller.perfilView);
 route.post('/perfil', auth, controller.perfilAddress);
+route.post('/perfil/alterar', auth, controller.perfilAlterarDados);
 export default route;

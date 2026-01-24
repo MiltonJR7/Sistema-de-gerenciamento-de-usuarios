@@ -1,5 +1,6 @@
 
 
+
 document.addEventListener('DOMContentLoaded', ()=> {
     const btn = document.querySelectorAll('.btnDeletar');
     for(let i = 0; i < btn.length; i++) {
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
             let obj = id
             if(confirm("Os dados seram deletados apos a confirmação, deseja confirmar?")) {
-                fetch('/dashboard/delete', {
+                fetch('/dashboard/endereco/delete', {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

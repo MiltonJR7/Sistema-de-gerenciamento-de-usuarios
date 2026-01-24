@@ -59,4 +59,27 @@ export default class HomeController {
             return res.status(500).json({ ok: false });
         }
     }
+
+    async perfilAlterarDados(req, res) {
+        let id = null;
+        if(req.user) id = req.user.id;
+        
+        try {
+            const { nome, email, genero } = req.body;
+            if(!nome && !email && !genero) return res.status(400).json({ ok: false });
+
+            const banco = new UserModel();
+            banco.usuNome = nome;
+            banco.usuEmail = email;
+            banco.usuGenero = genero;
+
+            const result = await banco.alterarUser(id);
+
+            if(result) return res.status(200).json({ ok: true });
+            return res.status(500).json({ ok: false });
+        } catch(err) {
+            console.log(err);
+            return err;
+        }
+    }
 }

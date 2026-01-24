@@ -7,7 +7,7 @@ const controller = new DashboardController;
 const route = express.Router();
 
 route.get('/', authAdmin, controller.dashboardView);
-route.post('/delete', authAdmin, controller.delete);
-
-
+route.get('/endereco', authAdmin, controller.dashboardEnderecoView);
+route.post('/delete', authAdmin, controller.deleteUsers);
+route.post('/endereco/delete', authAdmin, controller.deleteAddress);
 export default route;

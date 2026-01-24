@@ -52,11 +52,8 @@ export default class AddressModel {
                 values ($1, $2, $3, $4, $5, $6, $7, $8, $9)
                 returning end_id, end_cep, end_numero, end_bairro, end_cidade, end_estado, usu_id
             `;
-
-            console.log(this.#endEstado);
-
+            
             const values = [this.#endCep, this.#endLogradouro, this.#endNumero, this.#endComplemento, this.#endBairro, this.#endCidade, this.#endEstado, this.#endPais, this.#usuID];
-
             const { rows } = await client.query(sql, values);
             return rows[0] ?? null;
         } finally {
@@ -108,6 +105,66 @@ export default class AddressModel {
             }
 
             return listaEndereco;
+        } finally {
+            client.release();
+        }
+    }
+
+    async listarEnderecosDashboard() {
+        const client = await pool.connect();
+
+        try {
+            const sql = `
+                select
+                tb_endereco.end_id,
+                tb_endereco.end_cep,
+                tb_endereco.end_logradouro,
+                tb_endereco.end_numero,
+                tb_endereco.end_complemento,
+                tb_endereco.end_bairro,
+                tb_endereco.end_cidade,
+                tb_endereco.end_estado,
+                tb_endereco.end_pais,
+                tb_endereco.end_padrao,
+                tb_usuario.usu_id
+                from tb_endereco
+                inner join tb_usuario on tb_endereco.usu_id = tb_usuario.usu_id
+            `;
+
+            const result = await client.query(sql);
+            const rows = result.rows;
+
+            let listaEndereco = [];
+
+            for (let i = 0; i < rows.length; i++) {
+                let endereco = new AddressModel();
+                endereco.endID = rows[i].end_id;
+                endereco.endCep = rows[i].end_cep;
+                endereco.endLogradouro = rows[i].end_logradouro;
+                endereco.endNumero = rows[i].end_numero;
+                endereco.endComplemento = rows[i].end_complemento;
+                endereco.endBairro = rows[i].end_bairro;
+                endereco.endCidade = rows[i].end_cidade;
+                endereco.endEstado = rows[i].end_estado;
+                endereco.endPais = rows[i].end_pais;
+                endereco.usuID = rows[i].usu_id;
+
+                listaEndereco.push(endereco);
+            }
+
+            return listaEndereco;
+        } finally {
+            client.release();
+        }
+    }
+
+    async deleteAddress(id) {
+        const client = await pool.connect();
+
+        try {
+            const sql = "delete from tb_endereco where end_id = $1";
+            const result = await client.query(sql, [id]);
+            return result;
         } finally {
             client.release();
         }

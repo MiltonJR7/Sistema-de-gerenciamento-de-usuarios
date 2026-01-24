@@ -50,11 +50,11 @@
     <!-- Sidebar -->
     <aside class="sidebar">
         <nav class="sidebar-nav">
-            <a href="#" class="nav-item active">
+            <a href="/dashboard" class="nav-item">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <span>Usuários</span>
             </a>
-            <a href="/dashboard/endereco" class="nav-item">
+            <a href="/dashboard/endereco" class="nav-item active">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>Endereços</span>
             </a>
@@ -73,12 +73,11 @@
         </div>
     </aside>
 
-    <!-- Main Content -->
     <main class="main-content">
         <div class="content-header">
             <div>
-                <h1 class="page-title">Usuários</h1>
-                <p class="page-subtitle">Gerencie os usuários da plataforma</p>
+                <h1 class="page-title">Endereços</h1>
+                <p class="page-subtitle">Gerencie os endereços da plataforma</p>
             </div>
         </div>
 
@@ -89,7 +88,7 @@
         <div class="content-section">
             <div class="section-filters">
                 <div class="search-container-inline">
-                    <input type="text" class="search-input" placeholder="Buscar usuários...">
+                    <input type="text" class="search-input" placeholder="Buscar endereços...">
                     <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16zM19 19l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -97,10 +96,9 @@
             </div>
 
             <div class="card">
-                <div class="card-header">
+                 <div class="card-header">
                     <div class="card-header-top">
-                        <h2 class="card-title">Lista de Usuários</h2>
-                        <a href="/register" class="btn-primary">Novo usuário</a>
+                        <h2 class="card-title">Lista de Endereços</h2>
                     </div>
                 </div>
 
@@ -109,9 +107,13 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Nome</th>
-                                <th>Email</th>
-                                <th>Status</th>
+                                <th>CEP</th>
+                                <th>Logradouro</th>
+                                <th>Numero</th>
+                                <th>Bairro</th>
+                                <th>Cidade</th>
+                                <th>Estado</th>
+                                <th>ID usuario</th>
                                 <th class="actions-col" colspan="2">Ações</th>
                             </tr>
                         </thead>
@@ -124,27 +126,25 @@
                                                 <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
                                                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg>
-                                                <p>Nenhum usuário cadastrado</p>
+                                                <p>Nenhum endereço cadastrado</p>
                                             </div>
                                         </td>
                                     </tr>
                                 <% } else { %>
                                     <tr>
+                                        <td><%= lista[i].endID %></td>
+                                        <td><%= lista[i].endCep %></td>
+                                        <td><%= lista[i].endLogradouro %></td>
+                                        <td><%= lista[i].endNumero %></td>
+                                        <td><%= lista[i].endBairro %></td>
+                                        <td><%= lista[i].endCidade %></td>
+                                        <td><%= lista[i].endEstado %></td>
                                         <td><%= lista[i].usuID %></td>
-                                        <td><%= lista[i].usuNome %></td>
-                                        <td><%= lista[i].usuEmail %></td>
-                                        <td>
-                                            <% if(lista[i].usuAtivo === "ativo") { %>
-                                                <span class="usuarioAtivo">ATIVO</span>
-                                            <% } else { %>
-                                                <span class="usuarioInativo">INATIVO</span>
-                                            <% } %>
-                                        </td>
                                         <td>
                                             <button class="btnEditar">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </button>
-                                            <button class="btnDeletar" data-delete="<%= lista[i].usuID %>">
+                                            <button class="btnDeletar" data-delete="<%= lista[i].endID %>">
                                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                                             </button>
                                         </td>
@@ -162,4 +162,4 @@
 </body>
 </html>
 <script src="/js/theme.js"></script>
-<script src="/js/delete.js"></script>
+<script src="/js/deleteAddress.js"></script>

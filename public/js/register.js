@@ -136,11 +136,11 @@ document.addEventListener('DOMContentLoaded', ()=> {
             .finally(() => {
                 isSubmitting = false;
             });
-
         } else {
             for(let i = 0; i < listaValidar.length; i++) {
                 listaValidar[i].style.borderColor = "red";
             }
+            isSubmitting = false;
         }
     }
 })
