@@ -1,6 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', ()=> {
-
+    
+    const btn = document.getElementById("salvarAlteracao");
+    btn.addEventListener("click", alterarDados);
 
     function alterarDados() {
         const nome = document.getElementById('nome');

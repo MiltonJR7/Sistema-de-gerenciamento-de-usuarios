@@ -13,7 +13,7 @@ export default class DashboardController {
             res.render('Dashboard/dashboardPage', { layout: false, lista: lista });
         } catch(err) {
             console.log(err);
-            res.status(500).json({ menssage: "Erro em try lista" });
+            res.status(500).json({ err: "Erro na controladora com status: 500 - possivelmente erro com o banco de dados. --- dashboardView ---" });
         }
     }
 
@@ -30,7 +30,7 @@ export default class DashboardController {
             return res.status(500).json({ ok: false });
         } catch(err) {
             console.log(err);
-            res.status(500).json({ message: "Erro: em try delete", ok: false });
+            res.status(500).json({ err: "Erro na controladora com status: 500 - possivelmente erro com o banco de dados. --- deleteUsers ---", ok: false });
         }
     }
 
@@ -47,7 +47,7 @@ export default class DashboardController {
             return res.status(500).json({ ok: false });
         } catch(err) {
             console.log(err);
-            res.status(500).json({ message: "Erro: em try delete", ok: false });
+            res.status(500).json({ err: "Erro na controladora com status: 500 - possivelmente erro com o banco de dados. --- deleteAddress ---", ok: false });
         }
     }
 
@@ -57,11 +57,11 @@ export default class DashboardController {
             const banco = new AddressModel();
             const lista = await banco.listarEnderecosDashboard();
             
-            if(lista === null) return res.status(400).json({ mensage: "Erro na lista retornada!" });
+            if(lista === null) return res.status(400).json({ mensage: "Erro na lista retornada!", ok: false });
             res.render('Dashboard/enderecoPage', { layout: false, lista: lista });
         } catch(err) {
             console.log(err);
-            return res.status(400).json({ err: "Error in try. /controllers/dashboardControler.js" });
+            return res.status(400).json({ err: "Erro na controladora com status: 400 - possivelmente erro com o banco de dados. --- dashboardEnderecoView ---" });
         }
     }
 
@@ -72,11 +72,33 @@ export default class DashboardController {
             const banco = new UserModel();
             const lista = await banco.listarUsuarioPeloID(req.params.id);
 
-            if(lista === null) return res.status(400).json({ mensage: "Erro na lista retornada!" });
+            if(lista === null) return res.status(400).json({ mensage: "Erro na lista retornada!", ok: false });
             res.render('Dashboard/updatePage.ejs', { layout: false, lista: lista });
         } catch(err) {
             console.log(err);
-            return res.status(400).json({ err: "Error in try. /controllers/dashboardControler.js" });
+            return res.status(400).json({ err: "Erro na controladora com status: 400 - possivelmente erro com o banco de dados. --- dashboardUserUpdateView ---" });
+        }
+    }
+
+    async dashboardUserUpdateDelete(req, res) {
+
+        try {
+            let idUserEditPage = req.params.id;
+
+            console.log("BODY: ", req.body.id);
+            console.log("PARAMS: ", req.params);
+
+            if(idUserEditPage !== req.body.obj) return res.status(400).json({ mensage: "Erro provavel tentativa de manipulacao do params", ok: false });
+            if(!idUserEditPage) return res.status(500).json({ mensage: "Erro params inexistente ou invalido!", ok: false }); 
+
+            const banco = new UserModel();
+            const result = await banco.deleteUser(idUserEditPage);
+
+            if(result) res.status(200).json({ ok: true });
+            return res.status(500).json({ ok: false });
+        } catch(err) {
+            console.log(err);
+            return res.status(400).json({ err: "Erro na controladora com status: 400 - possivelmente erro com o banco de dados. --- dashboardUserUpdateDelete ---" })
         }
     }
 }

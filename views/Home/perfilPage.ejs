@@ -35,6 +35,16 @@
                             <span class="perfil-info-label">E-mail</span>
                             <span class="perfil-info-value"><%= lista.usu_email %></span>
                         </div>
+                        <div class="perfil-info-item" >
+                            <span class="perfil-info-label">Telefone</span>
+                            <span class="perfil-info-value">
+                                <% if(lista.usu_numero) { %>
+                                    <%= lista.usu_numero %>
+                                <% } else { %>
+                                    (00) 00000-0000
+                                <% } %>
+                            </span>
+                        </div>
                         <div class="perfil-info-item">
                             <span class="perfil-info-label">Gênero</span>
                             <span class="perfil-info-value"><%= lista.usu_genero %></span>
@@ -68,6 +78,11 @@
                         <div class="perfil-form-group">
                             <label for="email" class="perfil-form-label">E-mail</label>
                             <input type="email" id="email" class="perfil-form-control" placeholder="seu@email.com" value="<%= lista.usu_email %>" maxlength="100"/>
+                        </div>
+
+                        <div class="perfil-form-group">
+                            <label for="Telefone" class="perfil-form-label">Telefone</label>
+                            <input type="Telefone" id="Telefone" class="perfil-form-control" placeholder="(00) 00000-0000" value="<%= lista.usu_numero %>" maxlength="15"/>
                         </div>
 
                         <div class="perfil-form-group">

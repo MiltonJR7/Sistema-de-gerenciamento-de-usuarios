@@ -100,10 +100,19 @@
                             <div class="perfil-form-group">
                                 <label for="genero" class="perfil-form-label">Gênero</label>
                                 <select id="genero" name="genero" class="perfil-form-control">
-                                    <option value="">Selecione uma opção</option>
-                                    <option value="masculino">Masculino</option>
-                                    <option value="feminino">Feminino</option>
-                                    <option value="outro">Outro</option>
+                                    <% if(lista.usu_genero === "masculino") { %>
+                                        <option value="<%= lista.usu_genero %>"><%= lista.usu_genero %></option>
+                                        <option value="feminino">feminino</option>
+                                        <option value="outro">outro</option>
+                                    <% } else if(lista.usu_genero === "feminino") { %>
+                                        <option value="<%= lista.usu_genero %>"><%= lista.usu_genero %></option>
+                                        <option value="masculino">masculino</option>
+                                        <option value="outro">outro</option>
+                                    <% } else { %>
+                                        <option value="<%= lista.usu_genero %>"><%= lista.usu_genero %></option>
+                                        <option value="masculino">masculino</option>
+                                        <option value="feminino">feminino</option>
+                                    <% } %>
                                 </select>
                             </div>
                         </div>
@@ -134,7 +143,7 @@
                             </div>
                         </div>
 
-                        <!-- IDEIA FUTURA PARA IMPLEMENTAR IMAGEM PRO PUBLIC E ROTA DA IMAGEM PRO BANCO USANDO MULTER.
+                        <!-- IDEIA FUTURA PARA IMPLEMENTAR IMAGEM PARA O PUBLIC E ROTA DA IMAGEM PRO BANCO USANDO MULTER.
                         <div class="perfil-form-group full-width">
                             <label for="foto-perfil" class="perfil-form-label">Foto de Perfil</label>
                             <input
@@ -151,10 +160,7 @@
                             <button class="btn btn-primary-soft" id="salvarAlteracao">
                                 Salvar Alterações
                             </button>
-                            <button class="btn btn-outline-soft">
-                                Cancelar
-                            </button>
-                            <button class="btn btn-outline-danger-soft">
+                            <button class="btn btn-outline-danger-soft btnDeletar" data-delete-user-edit-page="<%= lista.usu_id %>">
                                 Excluir Conta
                             </button>
                         </div>
@@ -167,3 +173,4 @@
 </html>
 
 <script src="/js/alterarDash.js"></script>
+<script src="/js/delete.js"></script>

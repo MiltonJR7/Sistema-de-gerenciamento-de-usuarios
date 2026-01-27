@@ -12,4 +12,5 @@ route.post('/delete', authAdmin, controller.deleteUsers);
 route.post('/endereco/delete', authAdmin, controller.deleteAddress);
 
 route.get('/update/:id', authAdmin, controller.dashboardUserUpdateView);
+route.post('/update/:id', authAdmin, controller.dashboardUserUpdateDelete);
 export default route;
