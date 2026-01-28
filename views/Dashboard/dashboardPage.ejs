@@ -54,7 +54,7 @@
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <span>Usuários</span>
             </a>
-            <a href="/dashboard/endereco" class="nav-item">
+            <a href="/dashboard/address" class="nav-item">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>Endereços</span>
             </a>
@@ -100,7 +100,7 @@
                 <div class="card-header">
                     <div class="card-header-top">
                         <h2 class="card-title">Lista de Usuários</h2>
-                        <a href="/register" class="btn-primary">Novo usuário</a>
+                        <a href="/connect/register" class="btn-primary">Novo usuário</a>
                     </div>
                 </div>
 
@@ -142,7 +142,7 @@
                                         </td>
                                         <td>
                                             <button class="btnEditar">
-                                                <a href="/dashboard/update/<%= lista[i].usuID %>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                <a href="/dashboard/user/<%= lista[i].usuID %>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                             </button>
                                             <button class="btnDeletar" data-delete-user="<%= lista[i].usuID %>">
                                                 <i class="fa fa-trash-o" aria-hidden="true"></i>

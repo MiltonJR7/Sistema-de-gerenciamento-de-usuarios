@@ -11,7 +11,7 @@ const route = express.Router();
 
 route.get('/', authPublic, controller.homeView);
 route.get('/logout', controllerUser.logout);
-route.get('/perfil', auth, controller.perfilView);
-route.post('/perfil', auth, controller.perfilAddress);
-route.post('/perfil/alterar', auth, controller.perfilAlterarDados);
+route.get('/profile', auth, controller.perfilView);
+route.put('/profile/address', auth, controller.perfilAddress);
+route.put('/profile/allData', auth, controller.perfilAlterarDados);
 export default route;

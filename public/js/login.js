@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
                 senha: senha.value
             }
 
-            fetch('/login', {
+            fetch('/connect/login', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

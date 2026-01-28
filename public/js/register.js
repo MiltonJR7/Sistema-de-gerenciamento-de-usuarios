@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
                 genero: genero.value
             }
 
-            fetch('/register', {
+            fetch('/connect/register', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             })
             .then((corpo)=> {
                 if(corpo.ok) {
-                    window.location.href = "/login";
+                    window.location.href = "/connect/login";
                 } else {
                     window.location.reload();
                     alert('falhou foi mal ae erro de DEV KKK');
@@ -116,8 +116,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
                 pais: pais.value
             }
 
-            fetch("/perfil", {
-                method: "POST",
+            fetch("/profile/address", {
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },

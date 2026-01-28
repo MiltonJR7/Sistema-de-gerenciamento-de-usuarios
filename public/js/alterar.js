@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
                 genero: genero.value
             }
 
-            fetch('/perfil/alterar', {
-                method: "POST",
+            fetch('/profile/allData', {
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },

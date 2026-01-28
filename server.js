@@ -39,7 +39,7 @@ app.get('/db', async (req, res) => {
 });
 
 app.use('/', HomeRoute);
-app.use('/', UserRoute);
+app.use('/connect', UserRoute);
 app.use('/dashboard', DashboardRoute);
 
 if (!process.env.VERCEL) {

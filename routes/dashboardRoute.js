@@ -4,13 +4,13 @@ import DashboardController from '../controllers/dashboardController.js';
 import authAdmin from "../middleware/middlewareAdmin.js";
 
 const controller = new DashboardController;
-const route = express.Router();
+const route = express.Router(); 
 
 route.get('/', authAdmin, controller.dashboardView);
-route.get('/endereco', authAdmin, controller.dashboardEnderecoView);
-route.post('/delete', authAdmin, controller.deleteUsers);
-route.post('/endereco/delete', authAdmin, controller.deleteAddress);
+route.get('/address', authAdmin, controller.dashboardEnderecoView);
+route.delete('/user/delete', authAdmin, controller.deleteUsers);
+route.delete('/address/delete', authAdmin, controller.deleteAddress);
 
-route.get('/update/:id', authAdmin, controller.dashboardUserUpdateView);
-route.post('/update/:id', authAdmin, controller.dashboardUserUpdateDelete);
+route.get('/user/:id', authAdmin, controller.dashboardUserServiceView);
+route.delete('/user/delete/:id', authAdmin, controller.dashboardUserServiceDelete);
 export default route;

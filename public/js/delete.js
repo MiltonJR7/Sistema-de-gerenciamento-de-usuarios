@@ -11,13 +11,13 @@ document.addEventListener('DOMContentLoaded', ()=> {
             let id = "";
 
             if(idUser) {
-                router = "delete";
+                router = "user/delete";
                 id = idUser;
             } else if(idAddress) {
-                router = "endereco/delete";
+                router = "address/delete";
                 id = idAddress;
             } else {
-                router = `update/${idUserEdit}`;
+                router = `user/delete/${idUserEdit}`;
                 id = idUserEdit;
             }
 
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
             if(confirm("Os dados seram deletados apos a confirmação, deseja confirmar?")) {
                 fetch(`/dashboard/${router}`, {
-                    method: "POST",
+                    method: "DELETE",
                     headers: {
                         "Content-Type": "application/json"
                     },

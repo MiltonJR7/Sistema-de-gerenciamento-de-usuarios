@@ -58,14 +58,14 @@ export default class DashboardController {
             const lista = await banco.listarEnderecosDashboard();
             
             if(lista === null) return res.status(400).json({ mensage: "Erro na lista retornada!", ok: false });
-            res.render('Dashboard/enderecoPage', { layout: false, lista: lista });
+            res.render('Dashboard/addressPage', { layout: false, lista: lista });
         } catch(err) {
             console.log(err);
             return res.status(400).json({ err: "Erro na controladora com status: 400 - possivelmente erro com o banco de dados. --- dashboardEnderecoView ---" });
         }
     }
 
-    async dashboardUserUpdateView(req, res) {
+    async dashboardUserServiceView(req, res) {
         
         try {
 
@@ -73,26 +73,23 @@ export default class DashboardController {
             const lista = await banco.listarUsuarioPeloID(req.params.id);
 
             if(lista === null) return res.status(400).json({ mensage: "Erro na lista retornada!", ok: false });
-            res.render('Dashboard/updatePage.ejs', { layout: false, lista: lista });
+            res.render('Dashboard/userServicesPage.ejs', { layout: false, lista: lista });
         } catch(err) {
             console.log(err);
             return res.status(400).json({ err: "Erro na controladora com status: 400 - possivelmente erro com o banco de dados. --- dashboardUserUpdateView ---" });
         }
     }
 
-    async dashboardUserUpdateDelete(req, res) {
+    async dashboardUserServiceDelete(req, res) {
 
         try {
-            let idUserEditPage = req.params.id;
+            let idUserServices = req.params.id;
 
-            console.log("BODY: ", req.body.id);
-            console.log("PARAMS: ", req.params);
-
-            if(idUserEditPage !== req.body.obj) return res.status(400).json({ mensage: "Erro provavel tentativa de manipulacao do params", ok: false });
-            if(!idUserEditPage) return res.status(500).json({ mensage: "Erro params inexistente ou invalido!", ok: false }); 
+            if(idUserServices !== req.body.obj) return res.status(400).json({ mensage: "Erro provavel tentativa de manipulacao do params", ok: false });
+            if(!idUserServices) return res.status(500).json({ mensage: "Erro params inexistente ou invalido!", ok: false }); 
 
             const banco = new UserModel();
-            const result = await banco.deleteUser(idUserEditPage);
+            const result = await banco.deleteUser(idUserServices);
 
             if(result) res.status(200).json({ ok: true });
             return res.status(500).json({ ok: false });

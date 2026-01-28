@@ -4,7 +4,7 @@ import JWT from 'jsonwebtoken';
 export default function auth(req, res, next) {
     const token = req.cookies.token;
     
-    if(!token) return res.status(201).redirect('/login');
+    if(!token) return res.status(201).redirect('/connect/login');
 
     try {   
         const payload = JWT.verify(token, process.env.JWT_SECRET);

@@ -28,7 +28,7 @@ export default class HomeController {
 
     async perfilAddress(req, res) {
         let id = null;
-        let perID = null;
+        let perID = null
 
         if(req.user) id = req.user.id; 
         if(req.user) perID = req.user.perID;
