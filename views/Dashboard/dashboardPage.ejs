@@ -111,6 +111,7 @@
                                 <th>ID</th>
                                 <th>Nome</th>
                                 <th>Email</th>
+                                <th>Numero</th>
                                 <th>Status</th>
                                 <th class="actions-col" colspan="2">Ações</th>
                             </tr>
@@ -133,6 +134,13 @@
                                         <td><%= lista[i].usuID %></td>
                                         <td><%= lista[i].usuNome %></td>
                                         <td><%= lista[i].usuEmail %></td>
+                                        <td>
+                                            <% if(lista[i].usuNumero) { %>
+                                                (<%= lista[i].usuNumero.slice(0,2) %>) <%= lista[i].usuNumero.slice(2,7) %>-<%= lista[i].usuNumero.slice(7,11) %>
+                                            <% } else { %>
+                                                (00) 00000-000
+                                            <% } %>
+                                        </td>
                                         <td>
                                             <% if(lista[i].usuAtivo === "ativo") { %>
                                                 <span class="usuarioAtivo">ATIVO</span>

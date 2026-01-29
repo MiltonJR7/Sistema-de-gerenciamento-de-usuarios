@@ -10,10 +10,10 @@ export default class DashboardController {
             const lista = await banco.listarUsuarios();
 
             if(lista === null) return res.status(400).json({ mensage: "Erro na lista retornada!" });
-            res.render('Dashboard/dashboardPage', { layout: false, lista: lista });
+            return res.render('Dashboard/dashboardPage', { layout: false, lista: lista });
         } catch(err) {
             console.log(err);
-            res.status(500).json({ err: "Erro na controladora com status: 500 - possivelmente erro com o banco de dados. --- dashboardView ---" });
+            return res.status(500).json({ err: "Erro na controladora com status: 500 - possivelmente erro com o banco de dados. --- dashboardView ---" });
         }
     }
 
@@ -30,7 +30,7 @@ export default class DashboardController {
             return res.status(500).json({ ok: false });
         } catch(err) {
             console.log(err);
-            res.status(500).json({ err: "Erro na controladora com status: 500 - possivelmente erro com o banco de dados. --- deleteUsers ---", ok: false });
+            return res.status(500).json({ err: "Erro na controladora com status: 500 - possivelmente erro com o banco de dados. --- deleteUsers ---", ok: false });
         }
     }
 
@@ -47,7 +47,7 @@ export default class DashboardController {
             return res.status(500).json({ ok: false });
         } catch(err) {
             console.log(err);
-            res.status(500).json({ err: "Erro na controladora com status: 500 - possivelmente erro com o banco de dados. --- deleteAddress ---", ok: false });
+            return res.status(500).json({ err: "Erro na controladora com status: 500 - possivelmente erro com o banco de dados. --- deleteAddress ---", ok: false });
         }
     }
 
@@ -58,7 +58,7 @@ export default class DashboardController {
             const lista = await banco.listarEnderecosDashboard();
             
             if(lista === null) return res.status(400).json({ mensage: "Erro na lista retornada!", ok: false });
-            res.render('Dashboard/addressPage', { layout: false, lista: lista });
+            return res.render('Dashboard/addressPage', { layout: false, lista: lista });
         } catch(err) {
             console.log(err);
             return res.status(400).json({ err: "Erro na controladora com status: 400 - possivelmente erro com o banco de dados. --- dashboardEnderecoView ---" });
@@ -73,7 +73,7 @@ export default class DashboardController {
             const lista = await banco.listarUsuarioPeloID(req.params.id);
 
             if(lista === null) return res.status(400).json({ mensage: "Erro na lista retornada!", ok: false });
-            res.render('Dashboard/userServicesPage.ejs', { layout: false, lista: lista });
+            return res.render('Dashboard/userServicesPage.ejs', { layout: false, lista: lista });
         } catch(err) {
             console.log(err);
             return res.status(400).json({ err: "Erro na controladora com status: 400 - possivelmente erro com o banco de dados. --- dashboardUserUpdateView ---" });
@@ -91,7 +91,7 @@ export default class DashboardController {
             const banco = new UserModel();
             const result = await banco.deleteUser(idUserServices);
 
-            if(result) res.status(200).json({ ok: true });
+            if(result) return res.status(200).json({ ok: true });
             return res.status(500).json({ ok: false });
         } catch(err) {
             console.log(err);
@@ -114,7 +114,7 @@ export default class DashboardController {
 
             const result = await banco.alterarUser(idUserServices);
 
-            if(result) res.status(200).json({ ok: true });
+            if(result) return res.status(200).json({ ok: true });
             return res.status(500).json({ ok: false });
         } catch(err) {
             console.log(err);

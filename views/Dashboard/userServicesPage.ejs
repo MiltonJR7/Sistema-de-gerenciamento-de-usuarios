@@ -99,7 +99,11 @@
                                     name="telefone"
                                     class="perfil-form-control"
                                     placeholder="(00) 00000-0000"
-                                    value="(<%= lista.usu_numero.slice(0,2) %>) <%= lista.usu_numero.slice(2,7) %>-<%= lista.usu_numero.slice(7,11) %>" 
+                                    <% if(lista.usu_numero) { %>
+                                        value="(<%= lista.usu_numero.slice(0,2) %>) <%= lista.usu_numero.slice(2,7) %>-<%= lista.usu_numero.slice(7,11) %>"
+                                    <% } else {
+                                        value=""
+                                    } %> 
                                     maxlength="15"
                                 >
                             </div>

@@ -83,4 +83,22 @@ export default class HomeController {
             return err;
         }
     }
+
+    async profileDeleteAddress(req, res) {
+
+        try {
+            // if(id !== req.body.id && !req.body.id) return res.status(404).json({ok: false });  -> conseguir fk do usuario na tabela de endereco para vaidação funcionar.
+            let idAddress = req.body.obj;
+                        
+            if(!idAddress) return res.status(400).json({ message: "Erro: id não encontrado", ok: false });
+            const banco = new AddressModel();
+            const result = await banco.deleteAddress(idAddress);
+
+            if(result) return res.status(200).json({ ok: true });
+            return res.status(500).json({ ok: false });
+        } catch(err) {
+            console.log(err);
+            return err;
+        }
+    }
 }

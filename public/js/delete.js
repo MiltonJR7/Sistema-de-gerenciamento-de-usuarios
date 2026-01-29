@@ -1,5 +1,4 @@
 
-
 document.addEventListener('DOMContentLoaded', ()=> {
     const btn = document.querySelectorAll('.btnDeletar');
     for(let i = 0; i < btn.length; i++) {
@@ -7,18 +6,23 @@ document.addEventListener('DOMContentLoaded', ()=> {
             const idUser = e.currentTarget.dataset.deleteUser;
             const idAddress = e.currentTarget.dataset.deleteAddress;
             const idUserEdit = e.currentTarget.dataset.deleteUserEditPage;
+            const idAddressProfile = e.currentTarget.dataset.deleteAddressProfile;
+
             let router = "";
             let id = "";
 
             if(idUser) {
-                router = "user/delete";
+                router = "/dashboard/user/delete";
                 id = idUser;
             } else if(idAddress) {
-                router = "address/delete";
+                router = "/dashboard/address/delete";
                 id = idAddress;
-            } else {
-                router = `user/delete/${idUserEdit}`;
+            } else if(idUserEdit){
+                router = `/dashboard/user/delete/${idUserEdit}`;
                 id = idUserEdit;
+            } else {
+                router = `/profile/delete`;
+                id = idAddressProfile;
             }
 
             deletar(id, router);
@@ -31,7 +35,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             let obj = id;
 
             if(confirm("Os dados seram deletados apos a confirmação, deseja confirmar?")) {
-                fetch(`/dashboard/${router}`, {
+                fetch(`${router}`, {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json"
@@ -43,11 +47,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
                 })
                 .then((corpo)=> {
                     if(corpo.ok) {
-                        if(window.location.href === "/dashboard") {
-                            window.location.reload();
-                        } else {
-                            window.location.href = "/dashboard";
-                        }
+                        window.location.reload();
                     } else {
                         alert("Error na confirmação do corpo.");
                     }

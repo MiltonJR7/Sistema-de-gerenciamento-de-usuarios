@@ -14,4 +14,5 @@ route.get('/logout', controllerUser.logout);
 route.get('/profile', auth, controller.perfilView);
 route.put('/profile/address', auth, controller.perfilAddress);
 route.put('/profile/allData', auth, controller.perfilAlterarDados);
+route.delete('/profile/delete', auth, controller.profileDeleteAddress);
 export default route;

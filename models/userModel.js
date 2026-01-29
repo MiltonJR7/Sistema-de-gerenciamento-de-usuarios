@@ -102,6 +102,7 @@ export default class UserModel {
                 tb_usuario.usu_email,
                 tb_usuario.usu_ativo,
                 tb_usuario.usu_criacao,
+                tb_usuario.usu_numero,
                 tb_perfil.per_tipo
                 from tb_usuario
                 inner join tb_perfil on tb_usuario.per_id = tb_perfil.per_id
@@ -119,6 +120,7 @@ export default class UserModel {
                 usuario.usuEmail = rows[i].usu_email;
                 usuario.usuAtivo = rows[i].usu_ativo;
                 usuario.usuDate = rows[i].usu_criacao;
+                usuario.usuNumero = rows[i].usu_numero;
                 usuario.perTipo = rows[i].per_tipo;
 
                 listaUsuario.push(usuario);

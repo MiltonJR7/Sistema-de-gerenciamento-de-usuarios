@@ -37,8 +37,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
         const parts = window.location.pathname.split("/");
         const id = Number(parts[parts.length - 1]);
 
-        console.log(id);
-
         let validar = [];
 
         if(isSubmitting) return;
@@ -57,8 +55,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
                 genero: genero.value,
                 numero: cleanNumber
             }
-
-            console.log(obj);
 
             fetch(`/dashboard/user/${id}`, {
                 method: "PUT",

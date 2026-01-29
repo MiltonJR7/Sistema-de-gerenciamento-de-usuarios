@@ -265,11 +265,11 @@
                                     <p><strong>País:</strong> <%= listaEndereco[index].endPais %></p>
 
                                     <div class="address-actions">
-                                        <button class="btn btn-primary-soft btn-small">
+                                        <!-- <button class="btn btn-primary-soft btn-small btnPadrao">
                                             Ativar como padrão
-                                        </button>
+                                        </button> -->
 
-                                        <button class="btn btn-outline-danger-soft btn-small">
+                                        <button class="btn btn-outline-danger-soft btn-small btnDeletar" data-delete-address-profile="<%= listaEndereco[index].endID %>">
                                             Remover
                                         </button>
                                     </div>
@@ -287,3 +287,4 @@
 <script src="/js/apiViacep.js"></script>
 <script src="/js/register.js"></script>
 <script src="/js/alterar.js"></script>
+<script src="/js/delete.js"></script>
