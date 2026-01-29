@@ -18,6 +18,7 @@
     <div class="top-bar">
         <p>Frete grátis para todo Brasil em compras acima de R$ 299</p>
     </div>
+
     <header class="header">
         <div class="container">
             <div class="header-content">
@@ -50,16 +51,14 @@
                         <% } %>
                     </div>
                 </div>
-
             </div>
         </div>
     </header>
 
-    <!-- Navigation Bar -->
     <nav class="nav-bar">
         <div class="container">
             <div class="nav-content">
-                <button class="menu-btn">
+                <button class="menu-btn" id="menuToggle">
                     <i class="fas fa-bars"></i>
                     <span>Menu</span>
                 </button>
@@ -74,6 +73,7 @@
             </div>
         </div>
     </nav>
+
     <div>
         <%- body %>
     </div>
@@ -127,5 +127,7 @@
             </div>
         </div>
     </footer>
+    <script type="module" src="/js/script.js"></script>
 </body>
+
 </html>

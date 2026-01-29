@@ -1,97 +1,540 @@
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-<div>
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-carousel">
-                <button class="carousel-btn prev" id="heroPrev">
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <h3>Categorias</h3>
+        <button class="sidebar-close" id="sidebarClose">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <div class="sidebar-content">
+        <div class="sidebar-section">
+            <h4>Produtos</h4>
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="#smartphones">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Smartphones</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#tablets">
+                        <i class="fas fa-tablet-alt"></i>
+                        <span>Tablets</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#notebooks">
+                        <i class="fas fa-laptop"></i>
+                        <span>Notebooks</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#desktops">
+                        <i class="fas fa-desktop"></i>
+                        <span>Desktops</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#monitores">
+                        <i class="fas fa-tv"></i>
+                        <span>Monitores</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#acessorios">
+                        <i class="fas fa-headphones"></i>
+                        <span>Acessórios</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#perifericos">
+                        <i class="fas fa-keyboard"></i>
+                        <span>Periféricos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#audio">
+                        <i class="fas fa-volume-up"></i>
+                        <span>Áudio</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-expandable">
+                <button class="sidebar-expandable-toggle" data-target="brandsSubmenu">
+                    <div class="toggle-content">
+                        <i class="fas fa-tags"></i>
+                        <span>Marcas</span>
+                    </div>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </button>
+
+                <div class="sidebar-submenu" id="brandsSubmenu">
+                    <div class="brand-group">
+                        <div class="brand-category">
+                            <button class="brand-category-toggle" data-target="appleBrands">
+                                <span>Apple</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <div class="brand-subcategory" id="appleBrands">
+                                <a href="#apple-iphone">iPhone</a>
+                                <a href="#apple-ipad">iPad</a>
+                                <a href="#apple-macbook">MacBook</a>
+                                <a href="#apple-watch">Apple Watch</a>
+                            </div>
+                        </div>
+
+                        <div class="brand-category">
+                            <button class="brand-category-toggle" data-target="samsungBrands">
+                                <span>Samsung</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <div class="brand-subcategory" id="samsungBrands">
+                                <a href="#samsung-galaxy">Galaxy</a>
+                                <a href="#samsung-note">Galaxy Note</a>
+                                <a href="#samsung-tab">Galaxy Tab</a>
+                                <a href="#samsung-watch">Galaxy Watch</a>
+                            </div>
+                        </div>
+
+                        <div class="brand-category">
+                            <button class="brand-category-toggle" data-target="dellBrands">
+                                <span>Dell</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <div class="brand-subcategory" id="dellBrands">
+                                <a href="#dell-inspiron">Inspiron</a>
+                                <a href="#dell-xps">XPS</a>
+                                <a href="#dell-alienware">Alienware</a>
+                                <a href="#dell-vostro">Vostro</a>
+                            </div>
+                        </div>
+
+                        <div class="brand-category">
+                            <button class="brand-category-toggle" data-target="lenovoBrands">
+                                <span>Lenovo</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <div class="brand-subcategory" id="lenovoBrands">
+                                <a href="#lenovo-thinkpad">ThinkPad</a>
+                                <a href="#lenovo-ideapad">IdeaPad</a>
+                                <a href="#lenovo-legion">Legion</a>
+                                <a href="#lenovo-yoga">Yoga</a>
+                            </div>
+                        </div>
+
+                        <div class="brand-category">
+                            <button class="brand-category-toggle" data-target="motorolaBrands">
+                                <span>Motorola</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <div class="brand-subcategory" id="motorolaBrands">
+                                <a href="#motorola-moto-g">Moto G</a>
+                                <a href="#motorola-moto-e">Moto E</a>
+                                <a href="#motorola-edge">Edge</a>
+                                <a href="#motorola-razr">Razr</a>
+                            </div>
+                        </div>
+
+                        <div class="brand-category">
+                            <button class="brand-category-toggle" data-target="microsoftBrands">
+                                <span>Microsoft</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <div class="brand-subcategory" id="microsoftBrands">
+                                <a href="#microsoft-surface">Surface</a>
+                                <a href="#microsoft-xbox">Xbox</a>
+                                <a href="#microsoft-surface-laptop">Surface Laptop</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <h4>Ofertas Especiais</h4>
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="#start-tech">
+                        <i class="fas fa-rocket"></i>
+                        <span>Start Tech</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#seminovos">
+                        <i class="fas fa-recycle"></i>
+                        <span>Seminovos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#black-friday">
+                        <i class="fas fa-fire"></i>
+                        <span>Ofertas do Mês</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</aside>
+
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-carousel">
+            <button class="carousel-btn prev" id="heroPrev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="hero-slides" id="heroSlides">
+                <div class="hero-slide active">
+                    <div class="hero-content">
+                        <h1>Tecnologia do Futuro</h1>
+                        <p>Descubra os melhores produtos eletrônicos com os melhores preços</p>
+                        <button class="cta-btn">Compre Agora</button>
+                    </div>
+                    <div class="hero-image">
+                        <i class="fas fa-mobile-alt" style="font-size: 150px; color: rgba(11, 94, 215, 0.1);"></i>
+                    </div>
+                </div>
+                <div class="hero-slide">
+                    <div class="hero-content">
+                        <h1>Ofertas Especiais</h1>
+                        <p>Até 50% de desconto em produtos selecionados</p>
+                        <button class="cta-btn">Aproveitar</button>
+                    </div>
+                    <div class="hero-image">
+                        <i class="fas fa-laptop" style="font-size: 150px; color: rgba(11, 94, 215, 0.1);"></i>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-btn next" id="heroNext">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <div class="hero-dots" id="heroDots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+            </div>
+
+            <div class="hero-badge">Hot Deal</div>
+        </div>
+    </div>
+</section>
+
+<section class="categories-section">
+    <div class="container">
+        <div class="categories-grid">
+            <div class="category-item">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Smartphones</span>
+            </div>
+            <div class="category-item">
+                <i class="fas fa-tablet-alt"></i>
+                <span>Tablets</span>
+            </div>
+            <div class="category-item">
+                <i class="fas fa-laptop"></i>
+                <span>Notebooks</span>
+            </div>
+            <div class="category-item">
+                <i class="fas fa-desktop"></i>
+                <span>Desktops</span>
+            </div>
+            <div class="category-item">
+                <i class="fas fa-tv"></i>
+                <span>Monitores</span>
+            </div>
+            <div class="category-item">
+                <i class="fas fa-headphones"></i>
+                <span>Acessórios</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="start-tech-section" id="start-tech">
+    <div class="container">
+        <div class="section-header">
+            <h2>
+                <i class="fas fa-rocket"></i>
+                Start Tech
+            </h2>
+            <div class="carousel-controls">
+                <button class="control-btn" id="startTechPrev">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-
-                <div class="hero-slides" id="heroSlides"></div>
-
-                <button class="carousel-btn next" id="heroNext">
+                <button class="control-btn" id="startTechNext">
                     <i class="fas fa-chevron-right"></i>
                 </button>
-
-                <div class="hero-dots" id="heroDots"></div>
             </div>
         </div>
-    </section>
 
-    <section class="categories-section">
-        <div class="container">
-            <div class="categories-grid">
-                <div class="category-item">
-                    <i class="fas fa-mobile-alt"></i>
-                    <span>Smartphones</span>
+        <div class="products-carousel">
+            <div class="products-track" id="startTechTrack">
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="remaining-badge">Últimas unidades</span>
+                        <div class="product-actions">
+                            <button class="action-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="action-btn">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-image">
+                        <i class="fas fa-mobile-alt" style="font-size: 80px; color: #0B5ED7;"></i>
+                    </div>
+                    <h3 class="product-title">Smartphone Premium</h3>
+                    <span class="rating-badge">
+                        <i class="fas fa-star"></i>
+                        4.8
+                    </span>
+                    <div class="price-info">
+                        <div class="old-price">
+                            <span>R$ 2.999</span>
+                            <span class="discount-badge">-30%</span>
+                        </div>
+                        <div class="current-price">R$ 2.099</div>
+                        <p class="payment-info">à vista no PIX</p>
+                        <p class="installment-info">Ou em 10x de R$ 219,90</p>
+                    </div>
                 </div>
-                <div class="category-item">
-                    <i class="fas fa-tablet-alt"></i>
-                    <span>Tablets</span>
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="remaining-badge">Estoque baixo</span>
+                        <div class="product-actions">
+                            <button class="action-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="action-btn">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-image">
+                        <i class="fas fa-laptop" style="font-size: 80px; color: #0B5ED7;"></i>
+                    </div>
+                    <h3 class="product-title">Notebook Gamer</h3>
+                    <span class="rating-badge">
+                        <i class="fas fa-star"></i>
+                        4.9
+                    </span>
+                    <div class="price-info">
+                        <div class="old-price">
+                            <span>R$ 5.999</span>
+                            <span class="discount-badge">-25%</span>
+                        </div>
+                        <div class="current-price">R$ 4.499</div>
+                        <p class="payment-info">à vista no PIX</p>
+                        <p class="installment-info">Ou em 12x de R$ 374,92</p>
+                    </div>
                 </div>
-                <div class="category-item">
-                    <i class="fas fa-laptop"></i>
-                    <span>Notebooks</span>
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="remaining-badge">Stock</span>
+                        <div class="product-actions">
+                            <button class="action-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="action-btn">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-image">
+                        <i class="fas fa-headphones" style="font-size: 80px; color: #0B5ED7;"></i>
+                    </div>
+                    <h3 class="product-title">Fone Premium</h3>
+                    <span class="rating-badge">
+                        <i class="fas fa-star"></i>
+                        4.7
+                    </span>
+                    <div class="price-info">
+                        <div class="old-price">
+                            <span>R$ 899</span>
+                            <span class="discount-badge">-20%</span>
+                        </div>
+                        <div class="current-price">R$ 719</div>
+                        <p class="payment-info">à vista no PIX</p>
+                        <p class="installment-info">Ou em 5x de R$ 143,80</p>
+                    </div>
                 </div>
-                <div class="category-item">
-                    <i class="fas fa-desktop"></i>
-                    <span>Desktops</span>
-                </div>
-                <div class="category-item">
-                    <i class="fas fa-tv"></i>
-                    <span>Monitores</span>
-                </div>
-                <div class="category-item">
-                    <i class="fas fa-headphones"></i>
-                    <span>Acessórios</span>
+                <div class="product-card">
+                    <div class="product-header">
+                        <span class="remaining-badge">Hot Deal</span>
+                        <div class="product-actions">
+                            <button class="action-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <button class="action-btn">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-image">
+                        <i class="fas fa-tv" style="font-size: 80px; color: #0B5ED7;"></i>
+                    </div>
+                    <h3 class="product-title">Monitor 4K Ultra</h3>
+                    <span class="rating-badge">
+                        <i class="fas fa-star"></i>
+                        4.8
+                    </span>
+                    <div class="price-info">
+                        <div class="old-price">
+                            <span>R$ 1.999</span>
+                            <span class="discount-badge">-35%</span>
+                        </div>
+                        <div class="current-price">R$ 1.299</div>
+                        <p class="payment-info">à vista no PIX</p>
+                        <p class="installment-info">Ou em 8x de R$ 162,38</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="start-tech-section" id="start-tech">
-        <div class="container">
-            <div class="section-header">
-                <h2>
-                    <i class="fas fa-rocket"></i>
-                    Start Tech
-                </h2>
-                <div class="carousel-controls">
-                    <button class="control-btn" id="startTechPrev">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="control-btn" id="startTechNext">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+        <div class="carousel-dots" id="startTechDots"></div>
+    </div>
+</section>
+
+<section class="offers-section">
+    <div class="container">
+        <h2>Ofertas Dezembro</h2>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="notebook">Notebook</button>
+            <button class="tab-btn" data-tab="smartphones">Smartphones</button>
+            <button class="tab-btn" data-tab="computador">Computador</button>
+        </div>
+
+        <div class="products-grid" id="offersGrid">
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="remaining-badge">Limited</span>
+                    <div class="product-actions">
+                        <button class="action-btn active">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-image">
+                    <i class="fas fa-laptop" style="font-size: 80px; color: #0B5ED7;"></i>
+                </div>
+                <h3 class="product-title">Notebook Intel</h3>
+                <span class="rating-badge">
+                    <i class="fas fa-star"></i>
+                    4.9
+                </span>
+                <div class="price-info">
+                    <div class="old-price">
+                        <span>R$ 3.499</span>
+                        <span class="discount-badge">-40%</span>
+                    </div>
+                    <div class="current-price">R$ 2.099</div>
                 </div>
             </div>
-
-            <div class="products-carousel">
-                <div class="products-track" id="startTechTrack"></div>
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="remaining-badge">Stock</span>
+                    <div class="product-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-image">
+                    <i class="fas fa-mobile-alt" style="font-size: 80px; color: #0B5ED7;"></i>
+                </div>
+                <h3 class="product-title">Smartphone Top</h3>
+                <span class="rating-badge">
+                    <i class="fas fa-star"></i>
+                    4.8
+                </span>
+                <div class="price-info">
+                    <div class="old-price">
+                        <span>R$ 1.799</span>
+                        <span class="discount-badge">-28%</span>
+                    </div>
+                    <div class="current-price">R$ 1.299</div>
+                </div>
             </div>
-
-            <div class="carousel-dots" id="startTechDots"></div>
-        </div>
-    </section>
-
-    <section class="offers-section">
-        <div class="container">
-            <h2>Ofertas Dezembro</h2>
-
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="notebook">Notebook</button>
-                <button class="tab-btn" data-tab="smartphones">Smartphones</button>
-                <button class="tab-btn" data-tab="computador">Computador</button>
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="remaining-badge">Flash</span>
+                    <div class="product-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-image">
+                    <i class="fas fa-tablet-alt" style="font-size: 80px; color: #0B5ED7;"></i>
+                </div>
+                <h3 class="product-title">Tablet Powerful</h3>
+                <span class="rating-badge">
+                    <i class="fas fa-star"></i>
+                    4.7
+                </span>
+                <div class="price-info">
+                    <div class="old-price">
+                        <span>R$ 1.299</span>
+                        <span class="discount-badge">-22%</span>
+                    </div>
+                    <div class="current-price">R$ 1.012</div>
+                </div>
             </div>
-
-            <div class="products-grid" id="offersGrid"></div>
+            <div class="product-card">
+                <div class="product-header">
+                    <span class="remaining-badge">Sale</span>
+                    <div class="product-actions">
+                        <button class="action-btn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-image">
+                    <i class="fas fa-headphones" style="font-size: 80px; color: #0B5ED7;"></i>
+                </div>
+                <h3 class="product-title">Headset Pro</h3>
+                <span class="rating-badge">
+                    <i class="fas fa-star"></i>
+                    4.9
+                </span>
+                <div class="price-info">
+                    <div class="old-price">
+                        <span>R$ 599</span>
+                        <span class="discount-badge">-32%</span>
+                    </div>
+                    <div class="current-price">R$ 407</div>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="brands-section">
-        <div class="container">
-            <h3>As melhores marcas</h3>
-            <div class="brands-grid">
+<section class="brands-section">
+    <div class="container">
+        <h3>As melhores marcas</h3>
+        <div class="brands-carousel-wrapper">
+            <div class="brands-carousel" id="brandsCarousel">
                 <div class="brand-item">
                     <i class="fab fa-apple"></i>
                     <span>Apple</span>
@@ -118,33 +561,32 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="seminovo-section">
-        <div class="container">
-            <div class="seminovo-banner">
-                <div class="seminovo-pattern"></div>
-                <div class="seminovo-content">
-                    <h3>Já pensou em comprar um seminovo?</h3>
-                    <p>Produtos testados, revisados e com garantia. Economia inteligente sem abrir mão da qualidade.</p>
-                    <button class="cta-btn-secondary">Conhecer Seminovos</button>
-                </div>
+<section class="seminovo-section">
+    <div class="container">
+        <div class="seminovo-banner">
+            <div class="seminovo-pattern"></div>
+            <div class="seminovo-content">
+                <h3>Já pensou em comprar um seminovo?</h3>
+                <p>Produtos testados, revisados e com garantia. Economia inteligente sem abrir mão da qualidade.</p>
+                <button class="cta-btn-secondary">Conhecer Seminovos</button>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="newsletter-section">
-        <div class="container">
-            <div class="newsletter-content">
-                <h3>Junte-se à nossa newsletter</h3>
-                <p>Receba ofertas exclusivas e novidades em primeira mão</p>
-                <form class="newsletter-form" id="newsletterForm">
-                    <input type="text" placeholder="Seu nome" required>
-                    <input type="email" placeholder="Seu e-mail" required>
-                    <button type="submit">Inscreva-se</button>
-                </form>
-            </div>
+<section class="newsletter-section">
+    <div class="container">
+        <div class="newsletter-content">
+            <h3>Junte-se à nossa newsletter</h3>
+            <p>Receba ofertas exclusivas e novidades em primeira mão</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="text" placeholder="Seu nome" required>
+                <input type="email" placeholder="Seu e-mail" required>
+                <button type="submit">Inscreva-se</button>
+            </form>
         </div>
-    </section>
-</div>
-<script src="/js/script.js"></script>
+    </div>
+</section>
