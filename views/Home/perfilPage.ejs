@@ -83,7 +83,7 @@
                         <div class="perfil-form-group">
                             <label for="Telefone" class="perfil-form-label">Telefone</label>
                             <input type="tel" id="telefone" class="perfil-form-control" placeholder="(00) 00000-0000" 
-                            value="(<%= lista.usu_numero.slice(0,2) %>) <%= lista.usu_numero.slice(2,7) %>-<%= lista.usu_numero.slice(7,11) %>" maxlength="15"/>
+                            value="<% if(lista.usu_numero) { %> (<%= lista.usu_numero.slice(0,2) %>) <%= lista.usu_numero.slice(2,7) %>-<%= lista.usu_numero.slice(7,11) %> <% } %>" maxlength="15"/>
                         </div>
 
                         <div class="perfil-form-group">
