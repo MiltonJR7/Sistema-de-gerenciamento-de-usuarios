@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body data-theme="light">
-    <!-- Header -->
     <header class="header">
         <div class="top-bar">
             <div class="top-bar-content">
@@ -21,6 +20,10 @@
                 <div class="logo">
                     <span class="logo-text">Dashboard</span>
                 </div>
+
+                <button class="mobile-menu-toggle" id="menu-toggle" aria-label="Menu">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
 
                 <div class="header-actions">
 
@@ -47,7 +50,6 @@
         </div>
     </header>
 
-    <!-- Sidebar -->
     <aside class="sidebar">
         <nav class="sidebar-nav">
             <a href="#" class="nav-item active">
@@ -73,7 +75,6 @@
         </div>
     </aside>
 
-    <!-- Main Content -->
     <main class="main-content">
         <div class="content-header">
             <div>
@@ -131,24 +132,24 @@
                                     </tr>
                                 <% } else { %>
                                     <tr>
-                                        <td><%= lista[i].usuID %></td>
-                                        <td><%= lista[i].usuNome %></td>
-                                        <td><%= lista[i].usuEmail %></td>
-                                        <td>
+                                        <td data-label="ID"><%= lista[i].usuID %></td>
+                                        <td data-label="Nome"><%= lista[i].usuNome %></td>
+                                        <td data-label="Email"><%= lista[i].usuEmail %></td>
+                                        <td data-label="Numero">
                                             <% if(lista[i].usuNumero) { %>
                                                 (<%= lista[i].usuNumero.slice(0,2) %>) <%= lista[i].usuNumero.slice(2,7) %>-<%= lista[i].usuNumero.slice(7,11) %>
                                             <% } else { %>
                                                 (00) 00000-000
                                             <% } %>
                                         </td>
-                                        <td>
+                                        <td data-label="Status">
                                             <% if(lista[i].usuAtivo === "ativo") { %>
                                                 <span class="usuarioAtivo">ATIVO</span>
                                             <% } else { %>
                                                 <span class="usuarioInativo">INATIVO</span>
                                             <% } %>
                                         </td>
-                                        <td>
+                                        <td data-label="Ações">
                                             <button class="btnEditar">
                                                 <a href="/dashboard/user/<%= lista[i].usuID %>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                             </button>
@@ -170,3 +171,4 @@
 <script src="/js/theme.js"></script>
 <script src="/js/delete.js"></script>
 <script src="/js/alterarDash.js"></script>
+<script src="/js/menu.js"></script>

@@ -1,4 +1,3 @@
-
 :root {
     --bg-primary: #F6F3EE;
     --bg-secondary: #FFFFFF;
@@ -21,7 +20,6 @@
 }
 
 [data-theme="dark"] {
-    /* Tema Escuro */
     --bg-primary: #121212;
     --bg-secondary: #1B1B1B;
     --bg-card: #202020;
@@ -41,10 +39,6 @@
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
-
-/* ============================================
-   RESET E BASE
-   ============================================ */
 
 * {
     margin: 0;
@@ -71,10 +65,6 @@ button {
     border: none;
     background: none;
 }
-
-/* ============================================
-   HEADER
-   ============================================ */
 
 .header {
     position: fixed;
@@ -201,9 +191,9 @@ button {
     color: var(--text-primary);
 }
 
-/* ============================================
-   SIDEBAR
-   ============================================ */
+.mobile-menu-toggle {
+    display: none;
+}
 
 .sidebar {
     position: fixed;
@@ -292,11 +282,11 @@ button {
     transition: transform 0.3s ease;
 }
 
-.toggle-label input[type="checkbox"]:checked + .toggle-slider {
+.toggle-label input[type="checkbox"]:checked+.toggle-slider {
     background-color: var(--color-blue);
 }
 
-.toggle-label input[type="checkbox"]:checked + .toggle-slider::before {
+.toggle-label input[type="checkbox"]:checked+.toggle-slider::before {
     transform: translateX(22px);
 }
 
@@ -305,10 +295,6 @@ button {
     font-weight: 500;
     color: var(--text-secondary);
 }
-
-/* ============================================
-   MAIN CONTENT
-   ============================================ */
 
 .main-content {
     margin-left: 308px;
@@ -323,6 +309,7 @@ button {
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -345,10 +332,6 @@ button {
     color: var(--text-secondary);
 }
 
-/* ============================================
-   BANNER DECORATIVO
-   ============================================ */
-
 .banner-decorative {
     height: 120px;
     background-color: var(--color-yellow);
@@ -368,10 +351,6 @@ button {
     background-size: 20px 20px;
     opacity: 0.3;
 }
-
-/* ============================================
-   FILTROS E CHIPS
-   ============================================ */
 
 .content-section {
     max-width: 100%;
@@ -414,10 +393,6 @@ button {
     color: #FFFFFF;
 }
 
-/* ============================================
-   CARDS
-   ============================================ */
-
 .card {
     background-color: var(--bg-card);
     border-radius: 18px;
@@ -446,10 +421,6 @@ button {
     font-weight: 600;
     color: var(--text-primary);
 }
-
-/* ============================================
-   TABELA
-   ============================================ */
 
 .table-container {
     overflow-x: auto;
@@ -502,10 +473,6 @@ button {
     text-align: center;
 }
 
-/* ============================================
-   ESTADO VAZIO
-   ============================================ */
-
 .empty-state {
     text-align: center;
     padding: 64px 24px;
@@ -530,10 +497,6 @@ button {
     font-weight: 500;
 }
 
-/* ============================================
-   GRID DE PRODUTOS
-   ============================================ */
-
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -547,73 +510,6 @@ button {
     box-shadow: var(--shadow-md);
     text-align: center;
     grid-column: 1 / -1;
-}
-
-/* ============================================
-   RESPONSIVO
-   ============================================ */
-
-@media (max-width: 1024px) {
-    .sidebar {
-        left: -280px;
-    }
-
-    .main-content {
-        margin-left: 0;
-    }
-}
-
-@media (max-width: 768px) {
-    .header-content {
-        flex-wrap: wrap;
-    }
-
-    .search-container {
-        order: 3;
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
-
-    .header-actions {
-        flex-wrap: wrap;
-    }
-
-    .btn-primary {
-        font-size: 13px;
-        padding: 8px 16px;
-    }
-
-    .page-title {
-        font-size: 24px;
-    }
-
-    .banner-decorative {
-        height: 80px;
-    }
-
-    .products-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .header-icons {
-        display: none;
-    }
-
-    .main-content {
-        padding: 16px;
-    }
-
-    .card {
-        padding: 16px;
-    }
-
-    .data-table th,
-    .data-table td {
-        padding: 12px 8px;
-        font-size: 13px;
-    }
 }
 
 td button {
@@ -664,12 +560,6 @@ td button:focus {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 600px) {
-    td button {
-        padding: 6px 10px;
-    }
-}
-
 .usuarioAtivo {
     background-color: #4CAF50;
     color: white;
@@ -702,4 +592,418 @@ td button:focus {
 .usuarioInativo:hover {
     background-color: #e53935;
     transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        left: -280px;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-wrap: wrap;
+        padding: 0 16px;
+    }
+
+    .logo {
+        flex: 1;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background-color: var(--bg-hover);
+        color: var(--text-primary);
+        transition: all 0.2s ease;
+    }
+
+    .mobile-menu-toggle:hover {
+        background-color: var(--border-color);
+    }
+
+    .mobile-menu-toggle i {
+        font-size: 18px;
+    }
+
+    .sidebar {
+        left: 0;
+        top: 116px;
+        width: 100%;
+        height: auto;
+        max-height: 0;
+        overflow: hidden;
+        border-radius: 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border-bottom: 1px solid var(--border-color);
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        padding: 0;
+        z-index: 99;
+    }
+
+    .sidebar.open {
+        max-height: 400px;
+        padding: 16px 0;
+    }
+
+    .sidebar-nav {
+        padding: 0 16px;
+    }
+
+    .theme-toggle {
+        padding: 16px 32px;
+        margin-top: 8px;
+        padding-top: 16px;
+    }
+
+    .main-content {
+        margin-top: 116px;
+        margin-left: 0;
+        padding: 16px;
+    }
+
+    .search-container {
+        order: 3;
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .header-actions {
+        flex-wrap: wrap;
+    }
+
+    .btn-primary {
+        font-size: 12px;
+        padding: 10px 20px;
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .page-title {
+        font-size: 20px;
+        margin-bottom: 4px;
+    }
+
+    .page-subtitle {
+        font-size: 13px;
+    }
+
+    .banner-decorative {
+        height: 60px;
+        margin-bottom: 20px;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .card-title {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .data-table thead {
+        display: none;
+    }
+
+    .data-table tbody tr {
+        display: block;
+        margin-bottom: 12px;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: var(--bg-card);
+        box-shadow: var(--shadow-sm);
+        padding: 12px;
+    }
+
+    .data-table tbody tr:hover {
+        background-color: var(--bg-card);
+        box-shadow: var(--shadow-sm);
+    }
+
+    .data-table td {
+        display: block;
+        padding: 0;
+        border-bottom: none;
+        position: relative;
+        padding-left: 0;
+        text-align: left;
+        margin-bottom: 8px;
+        font-size: 12px;
+    }
+
+    .data-table td:last-child {
+        margin-bottom: 0;
+    }
+
+    .data-table td::before {
+        content: attr(data-label);
+        display: inline;
+        font-weight: 600;
+        color: var(--text-muted);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        margin-right: 6px;
+    }
+
+    .data-table td[data-label="ID"]::before {
+        content: 'ID:';
+    }
+
+    .data-table td[data-label="ID"] {
+        font-size: 11px;
+        color: var(--text-muted);
+        font-weight: 400;
+    }
+
+    .data-table td[data-label="ID"]::after {
+        display: none;
+    }
+
+    .data-table td[data-label="Nome"]::before {
+        content: 'Nome:';
+    }
+
+    .data-table td[data-label="Nome"] {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    .data-table td[data-label="Email"]::before {
+        content: 'Email:';
+    }
+
+    .data-table td[data-label="Email"] {
+        font-size: 12px;
+        color: var(--text-secondary);
+    }
+
+    .data-table td[data-label="Numero"]::before {
+        content: 'Tel:';
+    }
+
+    .data-table td[data-label="Numero"] {
+        font-size: 12px;
+        color: var(--text-secondary);
+    }
+
+    .data-table td[data-label="Status"]::before {
+        content: 'Status:';
+    }
+
+    .data-table td[data-label="Status"] {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    /* CEP */
+    .data-table td[data-label="CEP"]::before {
+        content: 'CEP:';
+    }
+
+    .data-table td[data-label="CEP"] {
+        font-size: 12px;
+        color: var(--text-secondary);
+    }
+
+    /* Rua / Logradouro */
+    .data-table td[data-label="Rua"]::before {
+        content: 'Rua:';
+    }
+
+    .data-table td[data-label="Rua"] {
+        font-size: 12px;
+        color: var(--text-secondary);
+    }
+
+    /* Número do endereço */
+    .data-table td[data-label="Numero"]::before {
+        content: 'Nº:';
+    }
+
+    .data-table td[data-label="Numero"] {
+        font-size: 12px;
+        color: var(--text-secondary);
+    }
+
+    /* Bairro */
+    .data-table td[data-label="Bairro"]::before {
+        content: 'Bairro:';
+    }
+
+    .data-table td[data-label="Bairro"] {
+        font-size: 12px;
+        color: var(--text-secondary);
+    }
+
+    /* Cidade */
+    .data-table td[data-label="Cidade"]::before {
+        content: 'Cidade:';
+    }
+
+    .data-table td[data-label="Cidade"] {
+        font-size: 12px;
+        color: var(--text-secondary);
+    }
+
+    /* Estado */
+    .data-table td[data-label="Estado"]::before {
+        content: 'Estado:';
+    }
+
+    .data-table td[data-label="Estado"] {
+        font-size: 12px;
+        color: var(--text-secondary);
+    }
+
+    /* ID do Usuário */
+    .data-table td[data-label="ID usuario"]::before {
+        content: 'Usuário ID:';
+    }
+
+    .data-table td[data-label="ID usuario"] {
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-top: 6px;
+    }
+
+    /* Título de seção (ENDEREÇO) */
+    .data-table td.section-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 1px;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    /* Remove o label automático */
+    .data-table td.section-title::before {
+        content: '';
+    }
+
+    /* Linha abaixo do título */
+    .data-table td.section-title hr {
+        width: 100%;
+        border: none;
+        border-top: 1px solid var(--border-color);
+        margin: 6px 0 0;
+    }
+
+
+    .usuarioAtivo,
+    .usuarioInativo {
+        padding: 4px 8px;
+        font-size: 10px;
+        border-radius: 4px;
+        font-weight: 600;
+        display: inline-block;
+    }
+
+    .data-table td[data-label="Ações"] {
+        display: block;
+        text-align: left;
+        padding: 0;
+        margin-top: 10px;
+        border-top: 1px solid var(--border-color);
+        padding-top: 10px;
+    }
+
+    .data-table td[data-label="Ações"]::before {
+        display: none;
+    }
+
+    td button {
+        padding: 8px 16px;
+        margin: 0 8px 0 0;
+        width: auto;
+        height: 32px;
+        border-radius: 6px;
+        min-width: 80px;
+    }
+
+    .btnEditar i,
+    .btnDeletar i {
+        font-size: 14px;
+        margin-right: 4px;
+    }
+
+    .btnEditar::after {
+        content: 'Editar';
+        font-size: 12px;
+        margin-left: 4px;
+    }
+
+    .btnDeletar::after {
+        content: 'Excluir';
+        font-size: 12px;
+        margin-left: 4px;
+    }
+
+    .card-header-top {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .card-header-top .btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .section-filters {
+        margin-bottom: 16px;
+    }
+
+    .search-container-inline {
+        max-width: 100%;
+    }
+
+    .search-input {
+        padding: 10px 40px 10px 16px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-icons {
+        display: none;
+    }
+
+    .main-content {
+        padding: 16px;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .data-table td {
+        font-size: 14px;
+    }
+
+    td button {
+        padding: 6px 10px;
+    }
 }
