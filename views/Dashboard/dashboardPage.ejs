@@ -41,47 +41,46 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <% if(lista[i].length === 0) { %>
+                            <tr>
+                                <td colspan="6" class="empty-state">
+                                    <div class="empty-content">
+                                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <p>Nenhum usuário cadastrado</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% } %>
                         <% for(let i = 0; i < lista.length; i++) { %>
-                            <% if(lista[i].length === 0) { %>
-                                <tr>
-                                    <td colspan="6" class="empty-state">
-                                        <div class="empty-content">
-                                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
-                                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-                                            <p>Nenhum usuário cadastrado</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <% } else { %>
-                                <tr>
-                                    <td data-label="ID"><%= lista[i].usuID %></td>
-                                    <td data-label="Nome"><%= lista[i].usuNome %></td>
-                                    <td data-label="Email"><%= lista[i].usuEmail %></td>
-                                    <td data-label="Numero">
-                                        <% if(lista[i].usuNumero) { %>
-                                            (<%= lista[i].usuNumero.slice(0,2) %>) <%= lista[i].usuNumero.slice(2,7) %>-<%= lista[i].usuNumero.slice(7,11) %>
-                                        <% } else { %>
-                                            (00) 00000-000
-                                        <% } %>
-                                    </td>
-                                    <td data-label="Status">
-                                        <% if(lista[i].usuAtivo === "ativo") { %>
-                                            <span class="usuarioAtivo">ATIVO</span>
-                                        <% } else { %>
-                                            <span class="usuarioInativo">INATIVO</span>
-                                        <% } %>
-                                    </td>
-                                    <td data-label="Ações">
-                                        <button class="btnEditar">
-                                            <a href="/dashboard/user/<%= lista[i].usuID %>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        </button>
-                                        <button class="btnDeletar" data-delete-user="<%= lista[i].usuID %>">
-                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            <% } %>
+                            <tr>
+                                <td data-label="ID"><%= lista[i].usuID %></td>
+                                <td data-label="Nome"><%= lista[i].usuNome %></td>
+                                <td data-label="Email"><%= lista[i].usuEmail %></td>
+                                <td data-label="Numero">
+                                    <% if(lista[i].usuNumero) { %>
+                                        (<%= lista[i].usuNumero.slice(0,2) %>) <%= lista[i].usuNumero.slice(2,7) %>-<%= lista[i].usuNumero.slice(7,11) %>
+                                    <% } else { %>
+                                        (00) 00000-000
+                                    <% } %>
+                                </td>
+                                <td data-label="Status">
+                                    <% if(lista[i].usuAtivo === "ativo") { %>
+                                        <span class="usuarioAtivo">ATIVO</span>
+                                    <% } else { %>
+                                        <span class="usuarioInativo">INATIVO</span>
+                                    <% } %>
+                                </td>
+                                <td data-label="Ações">
+                                    <button class="btnEditar">
+                                        <a href="/dashboard/user/<%= lista[i].usuID %>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                    </button>
+                                    <button class="btnDeletar" data-delete-user="<%= lista[i].usuID %>">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </button>
+                                </td>
+                            </tr>
                         <% } %>
                     </tbody>
                 </table>

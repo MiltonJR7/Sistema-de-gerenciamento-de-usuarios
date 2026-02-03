@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: { require: true },
+    ssl: { require: true }
 });
 
 export default class UserModel {

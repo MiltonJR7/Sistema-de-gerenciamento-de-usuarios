@@ -44,40 +44,36 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% for(let i=0; i < lista.length; i++) { %>
-                            <% if(lista[i].length===0) { %>
+                        <% if(lista.length === 0) { %>
+                            <tr>
+                                <td colspan="10" class="empty-state">
+                                    <div class="empty-content">
+                                        <i class="fa fa-map-marker" style="font-size:64px;"></i>
+                                        <p>Nenhum endereço cadastrado</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% } else { %>
+
+                            <% for(let i = 0; i < lista.length; i++) { %>
                                 <tr>
-                                    <td colspan="6" class="empty-state">
-                                        <div class="empty-content">
-                                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
-                                                <path
-                                                    d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
-                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                            <p>Nenhum endereço cadastrado</p>
-                                        </div>
+                                    <td class="section-title">ENDEREÇO<hr></td>
+                                    <td data-label="ID"><%= lista[i].endID %></td>
+                                    <td data-label="CEP"><%= lista[i].endCep %></td>
+                                    <td data-label="Logradouro"><%= lista[i].endLogradouro %></td>
+                                    <td data-label="Numero"><%= lista[i].endNumero %></td>
+                                    <td data-label="Bairro"><%= lista[i].endBairro %></td>
+                                    <td data-label="Cidade"><%= lista[i].endCidade %></td>
+                                    <td data-label="Estado"><%= lista[i].endEstado %></td>
+                                    <td data-label="ID usuario"><%= lista[i].usuID %></td>
+                                    <td data-label="Ações">
+                                        <button class="btnDeletar" data-delete-address="<%= lista[i].endID %>">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
                                     </td>
                                 </tr>
-                                <% } else { %>
-                                    <tr>
-                                        <td class="section-title" data-label="">ENDEREÇO<hr></td>
-                                        <td data-label="ID"><%= lista[i].endID %></td>
-                                        <td data-label="CEP"><%= lista[i].endCep %></td>
-                                        <td data-label="Logradouro"><%= lista[i].endLogradouro %></td>
-                                        <td data-label="Numero"><%= lista[i].endNumero %></td>
-                                        <td data-label="Bairro"><%= lista[i].endBairro %></td>
-                                        <td data-label="Cidade"><%= lista[i].endCidade %></td>
-                                        <td data-label="Estado"><%= lista[i].endEstado %></td>
-                                        <td data-label="ID usuario"><%= lista[i].usuID %></td>
-                                        <td data-label="Ações">
-                                            <button class="btnDeletar" data-delete-address="<%= lista[i].endID %>">
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                <% } %>
                             <% } %>
+                        <% } %>
                     </tbody>
                 </table>
             </div>
