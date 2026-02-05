@@ -5,13 +5,10 @@
             <aside class="perfil-card">
                 <div class="perfil-avatar-section">
                     <div class="perfil-avatar">
-                        <% if(lista.usu_url_imagem) { %>
-                            <img id="avatarPreview"
-                            src="<%= lista.usu_url_imagem %>" alt="avatar">
+                        <% if (typeof lista !== "undefined" && lista && lista.usu_url_imagem) { %>
+                            <img src="<%= lista.usu_url_imagem %>" alt="avatar">
                         <% } else { %>
-                            <img id="avatarPreview"
-                            src="/img/default_perfil.jpg"
-                            alt="Foto do usuário">
+                            <img src="/img/default_perfil.jpg" alt="avatar">
                         <% } %>
                     </div>
                     <button type="button" class="perfil-change-photo" id="btnTrocarFoto">
