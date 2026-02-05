@@ -8,7 +8,11 @@ export default class HomeController {
 
         if(req.user) id = req.user.id;
         if(req.user) perID = req.user.perID;
-        res.render('Home/homePage', { user: id, perfil: perID, layoutDashboard: false });
+        
+        const banco = new UserModel();
+        const lista = await banco.listarUsuarioPeloID(id);
+
+        res.render('Home/homePage', { user: id, perfil: perID, layoutDashboard: false, lista: lista });
     }
 
     async perfilView(req, res) {
@@ -20,6 +24,7 @@ export default class HomeController {
 
         const banco = new UserModel();
         const lista = await banco.listarUsuarioPeloID(id);
+
         const bancoEndereco = new AddressModel();
         const listaEndereco = await bancoEndereco.listarEnderecos(id);
 
@@ -65,16 +70,16 @@ export default class HomeController {
         if(req.user) id = req.user.id;
         
         try {
-            const { nome, email, genero, numero } = req.body;
-            if(!nome && !email && !genero && !numero) return res.status(400).json({ ok: false });
+            const { nome, email, genero, cleanNumber } = req.body;
 
             const banco = new UserModel();
-            banco.usuNome = nome;
-            banco.usuEmail = email;
-            banco.usuGenero = genero;
-            banco.usuNumero = numero;
+            if (nome) banco.usuNome = nome;
+            if (email) banco.usuEmail = email;
+            if (genero) banco.usuGenero = genero;
+            if (cleanNumber) banco.usuNumero = cleanNumber;
+            if (req.file) banco.usuUrlImagem = req.file.filename;
 
-            const result = await banco.alterarUser(id);
+            const result = await banco.alterarUserPerfil(id);
 
             if(result) return res.status(200).json({ ok: true });
             return res.status(500).json({ ok: false });

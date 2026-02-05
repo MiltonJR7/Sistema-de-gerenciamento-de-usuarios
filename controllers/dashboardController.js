@@ -108,15 +108,17 @@ export default class DashboardController {
         
         try {
             let idUserServices = req.params.id;
-            const {nome, email, genero, numero, senha} = req.body;
+            const {nome, email, genero, senha, cleanNumber} = req.body;
+            console.log(req.body)
             if(!idUserServices) return res.status(500).json({ mensage: "Erro params inexistente ou invalido!", ok: false }); 
 
             const banco = new UserModel();
-            banco.usuNome = nome;
-            banco.usuEmail = email;
-            banco.usuGenero = genero;
-            banco.usuSenha = senha;
-            banco.usuNumero = numero;
+            if(nome) banco.usuNome = nome;
+            if(email) banco.usuEmail = email;
+            if(genero) banco.usuGenero = genero;
+            if(senha) banco.usuSenha = nome;
+            if(cleanNumber) banco.usuNumero = cleanNumber;
+            if(req.file) banco.usuUrlImagem = req.file.filename;
 
             const result = await banco.alterarUser(idUserServices);
             if(result) return res.status(200).json({ ok: true });
@@ -158,13 +160,14 @@ export default class DashboardController {
         try {
 
             const { nome, descricao, preco, codigoBarras, status, categoria } = req.body;
-            console.log(descricao)
-            if(!nome || !descricao || !preco || !codigoBarras || !status || !categoria) return res.status(400).json({ ok: false });
+            const imagem = req.file.filename;
+            if(!nome || !preco || !codigoBarras || !status || !categoria) return res.status(400).json({ ok: false });
 
             const banco = new ProductModel();
             banco.proNome = nome;
             banco.proDescricao = descricao;
             banco.proPreco = preco;
+            banco.proImagem = imagem;
             banco.proCodigoBarras = codigoBarras;
             banco.proStatus = status;
             banco.catID = categoria;

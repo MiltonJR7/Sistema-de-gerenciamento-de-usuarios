@@ -1,172 +1,197 @@
 <div class="perfil-page">
-        <div class="perfil-decorative-banner"></div>
-        <div class="perfil-container">
-            <div class="perfil-grid">
-                <aside class="perfil-card">
-                    <div class="perfil-avatar-section">
-                        <div class="perfil-avatar">
-                            <div class="perfil-avatar-placeholder"><img src="/img/default_perfil.jpg" alt="default"></div>
-                        </div>
-                        <label for="profile-photo" class="perfil-change-photo">
-                           <i class="fa fa-camera" aria-hidden="true"></i>
-                            Alterar Foto
-                        </label>
-                        <input type="file" id="profile-photo" class="perfil-file-input" accept="image/*">
+    <div class="perfil-decorative-banner"></div>
+    <div class="perfil-container">
+        <div class="perfil-grid">
+            <aside class="perfil-card">
+                <div class="perfil-avatar-section">
+                    <div class="perfil-avatar">
+                        <% if(lista.usu_url_imagem) { %>
+                            <img id="avatarPreview"
+                            src="/img/imageStorage/<%= lista.usu_url_imagem %>" alt="avatar">
+                        <% } else { %>
+                            <img id="avatarPreview"
+                            src="https://img.freepik.com/vetores-premium/icone-de-perfil-de-avatar-padrao-imagem-de-usuario-de-midia-social-icone-de-avatar-cinza-silhueta-de-perfil-em-branco-ilustracao-vetorial_561158-3407.jpg"
+                            alt="Foto do usuário">"
+                        <% } %>
+                    </div>
+                    <button type="button" class="perfil-change-photo" id="btnTrocarFoto">
+                        Alterar foto
+                    </button>
+                    <input type="file" id="avatarInput" name="imagem" accept="image/*" hidden>
+                </div>
+
+                <div class="perfil-info-list">
+                    <div class="perfil-info-item">
+                        <span class="perfil-info-label">Nome Completo</span>
+                        <div class="perfil-info-value"><%= lista.usu_nome %></div>
                     </div>
 
-                    <div class="perfil-info-list">
-                        <div class="perfil-info-item">
-                            <span class="perfil-info-label">Nome Completo</span>
-                            <div class="perfil-info-value"><%= lista.usu_nome %></div>
-                        </div>
+                    <div class="perfil-info-item">
+                        <span class="perfil-info-label">E-mail</span>
+                        <div class="perfil-info-value"><%= lista.usu_email %></div>
+                    </div>
 
-                        <div class="perfil-info-item">
-                            <span class="perfil-info-label">E-mail</span>
-                            <div class="perfil-info-value"><%= lista.usu_email %></div>
-                        </div>
-
-                        <div class="perfil-info-item">
-                            <span class="perfil-info-label">Telefone</span>
-                            <div class="perfil-info-value">
-                                <% if(lista.usu_numero) { %>
-                                    (<%= lista.usu_numero.slice(0,2) %>) <%= lista.usu_numero.slice(2,7) %>-<%= lista.usu_numero.slice(7,11) %>
-                                <% } else { %>
-                                    (00) 00000-000
-                                <% } %>
-                            </div>
-                        </div>
-
-                        <div class="perfil-info-item">
-                            <span class="perfil-info-label">Gênero</span>
-                            <div class="perfil-info-value"><%= lista.usu_genero %></div>
+                    <div class="perfil-info-item">
+                        <span class="perfil-info-label">Telefone</span>
+                        <div class="perfil-info-value">
+                            <% if(lista.usu_numero) { %>
+                                (<%= lista.usu_numero.slice(0,2) %>) <%= lista.usu_numero.slice(2,7) %>-<%= lista.usu_numero.slice(7,11) %>
+                            <% } else { %>
+                                (00) 00000-000
+                            <% } %>
                         </div>
                     </div>
 
-                    <a href="/dashboard" class="perfil-back-button">
-                        ← Voltar a Dashboard
-                    </a>
-                </aside>
-
-                <main class="perfil-card">
-                    <div class="perfil-header">
-                        <h1 class="perfil-title">Editar Perfil</h1>
-                        <p class="perfil-subtitle">Atualize suas informações pessoais e mantenha seu perfil sempre atualizado.</p>
+                    <div class="perfil-info-item">
+                        <span class="perfil-info-label">Gênero</span>
+                        <div class="perfil-info-value"><%= lista.usu_genero %></div>
                     </div>
+                </div>
 
-                    <div class="perfil-form">
-                        <div class="perfil-form-row">
-                            <div class="perfil-form-group">
-                                <label for="nome" class="perfil-form-label">Nome Completo</label>
-                                <input
-                                    type="text"
-                                    id="nome"
-                                    name="nome"
-                                    class="perfil-form-control"
-                                    placeholder="Digite seu nome completo"
-                                    value="<%= lista.usu_nome %>"
-                                >
-                            </div>
+                <a href="/dashboard" class="perfil-back-button">
+                    ← Voltar a Dashboard
+                </a>
+            </aside>
 
-                            <div class="perfil-form-group">
-                                <label for="email" class="perfil-form-label">E-mail</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    class="perfil-form-control"
-                                    placeholder="seuemail@exemplo.com"
-                                    value="<%= lista.usu_email %>"
-                                >
-                            </div>
-                        </div>
+            <main class="perfil-card">
+                <div class="perfil-header">
+                    <h1 class="perfil-title">Editar Perfil</h1>
+                    <p class="perfil-subtitle">Atualize suas informações pessoais e mantenha seu perfil sempre atualizado.</p>
+                </div>
 
-                        <div class="perfil-form-row">
-                            <div class="perfil-form-group">
-                                <label for="telefone" class="perfil-form-label">Número de Telefone</label>
-                                <input
-                                    type="tel"
-                                    id="telefone"
-                                    name="telefone"
-                                    class="perfil-form-control"
-                                    placeholder="(00) 00000-0000"
-                                    <% if(lista.usu_numero) { %>
-                                        value="(<%= lista.usu_numero.slice(0,2) %>) <%= lista.usu_numero.slice(2,7) %>-<%= lista.usu_numero.slice(7,11) %>"
-                                    <% } else {
-                                        value=""
-                                    } %> 
-                                    maxlength="15"
-                                >
-                            </div>
-
-                            <div class="perfil-form-group">
-                                <label for="genero" class="perfil-form-label">Gênero</label>
-                                <select id="genero" name="genero" class="perfil-form-control">
-                                    <% if(lista.usu_genero === "masculino") { %>
-                                        <option value="<%= lista.usu_genero %>"><%= lista.usu_genero %></option>
-                                        <option value="feminino">feminino</option>
-                                        <option value="outro">outro</option>
-                                    <% } else if(lista.usu_genero === "feminino") { %>
-                                        <option value="<%= lista.usu_genero %>"><%= lista.usu_genero %></option>
-                                        <option value="masculino">masculino</option>
-                                        <option value="outro">outro</option>
-                                    <% } else { %>
-                                        <option value="<%= lista.usu_genero %>"><%= lista.usu_genero %></option>
-                                        <option value="masculino">masculino</option>
-                                        <option value="feminino">feminino</option>
-                                    <% } %>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="perfil-form-row">
-                            <div class="perfil-form-group">
-                                <label for="senha" class="perfil-form-label">Nova Senha</label>
-                                <input
-                                    type="password"
-                                    id="senha"
-                                    name="senha"
-                                    class="perfil-form-control"
-                                    placeholder="Digite uma nova senha (opcional)"
-                                    minlength="6"
-                                >
-                            </div>
-
-                            <div class="perfil-form-group">
-                                <label for="confSenha" class="perfil-form-label">Confirmar Senha</label>
-                                <input
-                                    type="password"
-                                    id="confSenha"
-                                    name="confSenha"
-                                    class="perfil-form-control"
-                                    placeholder="Confirme a nova senha"
-                                    minlength="6"
-                                >
-                            </div>
-                        </div>
-
-                        <!-- IDEIA FUTURA PARA IMPLEMENTAR IMAGEM PARA O PUBLIC E ROTA DA IMAGEM PRO BANCO USANDO MULTER.
-                        <div class="perfil-form-group full-width">
-                            <label for="foto-perfil" class="perfil-form-label">Foto de Perfil</label>
+                <div class="perfil-form">
+                    <div class="perfil-form-row">
+                        <div class="perfil-form-group">
+                            <label for="nome" class="perfil-form-label">Nome Completo</label>
                             <input
-                                type="file"
-                                id="foto-perfil"
-                                name="foto-perfil"
+                                type="text"
+                                id="nome"
+                                name="nome"
                                 class="perfil-form-control"
-                                accept="image/png, image/jpeg, image/jpg, image/gif"
+                                placeholder="Digite seu nome completo"
+                                value="<%= lista.usu_nome %>"
                             >
                         </div>
-                        -->
 
-                        <div class="perfil-actions">
-                            <button class="btn btn-primary-soft" id="salvarAlteracao">
-                                Salvar Alterações
-                            </button>
-                            <button class="btn btn-outline-danger-soft btnDeletarServices" data-delete-user-edit-page="<%= lista.usu_id %>">
-                                Excluir conta
-                            </button>
+                        <div class="perfil-form-group">
+                            <label for="email" class="perfil-form-label">E-mail</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="perfil-form-control"
+                                placeholder="seuemail@exemplo.com"
+                                value="<%= lista.usu_email %>"
+                            >
                         </div>
                     </div>
-                </main>
-            </div>
+
+                    <div class="perfil-form-row">
+                        <div class="perfil-form-group">
+                            <label for="telefone" class="perfil-form-label">Número de Telefone</label>
+                            <input
+                                type="tel"
+                                id="telefone"
+                                name="telefone"
+                                class="perfil-form-control"
+                                placeholder="(00) 00000-0000"
+                                <% if(lista.usu_numero) { %>
+                                    value="(<%= lista.usu_numero.slice(0,2) %>) <%= lista.usu_numero.slice(2,7) %>-<%= lista.usu_numero.slice(7,11) %>"
+                                <% } else {
+                                    value=""
+                                } %> 
+                                maxlength="15"
+                            >
+                        </div>
+
+                        <div class="perfil-form-group">
+                            <label for="genero" class="perfil-form-label">Gênero</label>
+                            <select id="genero" name="genero" class="perfil-form-control">
+                                <% if(lista.usu_genero === "masculino") { %>
+                                    <option value="<%= lista.usu_genero %>"><%= lista.usu_genero %></option>
+                                    <option value="feminino">feminino</option>
+                                    <option value="outro">outro</option>
+                                <% } else if(lista.usu_genero === "feminino") { %>
+                                    <option value="<%= lista.usu_genero %>"><%= lista.usu_genero %></option>
+                                    <option value="masculino">masculino</option>
+                                    <option value="outro">outro</option>
+                                <% } else { %>
+                                    <option value="<%= lista.usu_genero %>"><%= lista.usu_genero %></option>
+                                    <option value="masculino">masculino</option>
+                                    <option value="feminino">feminino</option>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="perfil-form-row">
+                        <div class="perfil-form-group">
+                            <label for="senha" class="perfil-form-label">Nova Senha</label>
+                            <input
+                                type="password"
+                                id="senha"
+                                name="senha"
+                                class="perfil-form-control"
+                                placeholder="Digite uma nova senha (opcional)"
+                                minlength="6"
+                            >
+                        </div>
+
+                        <div class="perfil-form-group">
+                            <label for="confSenha" class="perfil-form-label">Confirmar Senha</label>
+                            <input
+                                type="password"
+                                id="confSenha"
+                                name="confSenha"
+                                class="perfil-form-control"
+                                placeholder="Confirme a nova senha"
+                                minlength="6"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- IDEIA FUTURA PARA IMPLEMENTAR IMAGEM PARA O PUBLIC E ROTA DA IMAGEM PRO BANCO USANDO MULTER.
+                    <div class="perfil-form-group full-width">
+                        <label for="foto-perfil" class="perfil-form-label">Foto de Perfil</label>
+                        <input
+                            type="file"
+                            id="foto-perfil"
+                            name="foto-perfil"
+                            class="perfil-form-control"
+                            accept="image/png, image/jpeg, image/jpg, image/gif"
+                        >
+                    </div>
+                    -->
+
+                    <div class="perfil-actions">
+                        <button class="btn btn-primary-soft" id="salvarAlteracao">
+                            Salvar Alterações
+                        </button>
+                        <button class="btn btn-outline-danger-soft btnDeletarServices" data-delete-user-edit-page="<%= lista.usu_id %>">
+                            Excluir conta
+                        </button>
+                    </div>
+                </div>
+            </main>
         </div>
     </div>
+</div>
+
+<script>
+    const btnTrocarFoto = document.getElementById("btnTrocarFoto");
+    const avatarInput = document.getElementById("avatarInput");
+    const avatarPreview = document.getElementById("avatarPreview");
+
+    btnTrocarFoto.addEventListener("click", () => avatarInput.click());
+
+    avatarInput.addEventListener("change", () => {
+        const file = avatarInput.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = e => {
+            avatarPreview.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+</script>

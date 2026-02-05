@@ -116,6 +116,22 @@
                         ></textarea>
                     </div>
 
+                    <div class="prodimg-upload-section">
+                        <label class="prodimg-label">Imagem do Produto</label>
+
+                        <div class="prodimg-upload-box" id="prodimgUploadBox">
+                            <input type="file" id="prodimgInput" name="imagem" accept="image/*" hidden>
+                            <div class="prodimg-placeholder" id="prodimgPlaceholder">
+                                <i class="fa fa-image"></i>
+                                <span>Clique ou arraste uma imagem</span>
+                                <small>PNG, JPG ou WEBP</small>
+                            </div>
+
+                            <img id="prodimgPreview" class="prodimg-preview" />
+                            <button type="button" class="prodimg-remove" id="prodimgRemove">Remover</button>
+                        </div>
+                    </div>
+
                     <div class="perfil-actions">
                         <button class="btn btn-primary-soft">
                             <i class="fa fa-save"></i>
@@ -139,3 +155,37 @@
         </div>
     </div>
 </div>
+
+<script>
+    const input = document.getElementById("prodimgInput");
+    const preview = document.getElementById("prodimgPreview");
+    const placeholder = document.getElementById("prodimgPlaceholder");
+    const removeBtn = document.getElementById("prodimgRemove");
+    const box = document.getElementById("prodimgUploadBox");
+
+    box.addEventListener("click", () => input.click());
+
+    input.addEventListener("change", () => {
+        const file = input.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = e => {
+                preview.src = e.target.result;
+                preview.style.display = "block";
+                removeBtn.style.display = "inline-block";
+                placeholder.style.display = "none";
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    removeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        input.value = "";
+        preview.src = "";
+        preview.style.display = "none";
+        removeBtn.style.display = "none";
+        placeholder.style.display = "block";
+    });
+</script>
+

@@ -232,3 +232,83 @@
     font-size: 0.9rem;
     margin: 0;
 }
+
+/* ===== UPLOAD IMAGEM PRODUTO (ISOLADO) ===== */
+
+.prodimg-upload-section {
+    margin-top: 18px;
+}
+
+.prodimg-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.prodimg-upload-box {
+    position: relative;
+    border: 2px dashed #d0d5dd;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    background: #fafafa;
+    transition: 0.2s ease;
+}
+
+.prodimg-upload-box:hover {
+    border-color: #6c63ff;
+    background: #f3f2ff;
+}
+
+.prodimg-placeholder i {
+    font-size: 28px;
+    color: #888;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.prodimg-placeholder span {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.prodimg-placeholder small {
+    color: #777;
+    font-size: 12px;
+}
+
+/* PREVIEW */
+.prodimg-preview {
+    display: none;
+    max-width: 100%;
+    max-height: 200px;
+    margin: 10px auto 0;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+/* BOTÃO REMOVER */
+.prodimg-remove {
+    display: none;
+    margin-top: 10px;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.prodimg-remove:hover {
+    opacity: 0.9;
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+    .prodimg-upload-box {
+        padding: 14px;
+    }
+}

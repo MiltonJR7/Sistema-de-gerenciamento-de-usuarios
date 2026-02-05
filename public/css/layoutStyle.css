@@ -125,12 +125,28 @@ body {
 
     padding: 0;
     line-height: 1;
+
+    overflow: hidden;
 }
 
 .icon-btn i {
     display: block;
     line-height: 1;
 }
+
+.icon-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+}
+
+.icon-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
 
 
 a.icon-btn {

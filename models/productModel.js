@@ -91,12 +91,12 @@ export default class ProductModel {
         
         try {
             const sql = `
-                insert into tb_produto (pro_nome, pro_descricao, pro_preco, pro_codigo_barras, pro_status, cat_id)
-                values ($1, $2, $3, $4, $5, $6)
-                returning pro_nome, pro_preco, pro_status, cat_id
+                insert into tb_produto (pro_nome, pro_descricao, pro_preco, pro_imagem, pro_codigo_barras, pro_status, cat_id)
+                values ($1, $2, $3, $4, $5, $6, $7)
+                returning pro_nome, pro_preco, pro_imagem, pro_status, cat_id
             `;
 
-            const values = [ this.#proNome, this.#proDescricao, this.#proPreco, this.#proCodigoBarras, this.#proStatus, this.#catID ];
+            const values = [ this.#proNome, this.#proDescricao, this.#proPreco, this.#proImagem, this.#proCodigoBarras, this.#proStatus, this.#catID ];
             const { rows } = await client.query(sql, values);
             return rows[0] ?? null;
         } finally {

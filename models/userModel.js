@@ -144,6 +144,7 @@ export default class UserModel {
                 tb_usuario.usu_ativo,
                 tb_usuario.usu_criacao,
                 tb_usuario.usu_genero,
+                tb_usuario.usu_url_imagem,
                 tb_usuario.usu_numero,
                 tb_perfil.per_tipo
                 from tb_usuario
@@ -177,16 +178,105 @@ export default class UserModel {
         const client = await pool.connect();
 
         try {
-            const saltRounds = 10;
-            const hash = await bcrypt.hash(this.#usuSenha, saltRounds);
+            let campos = [];
+            let valores = [];
+            let i = 1;
 
-            const sql = "update tb_usuario set usu_nome = $1, usu_email = $2, usu_genero = $3, usu_hash_senha = $4, usu_numero = $5 where usu_id = $6";
-            const values = [ this.#usuNome, this.#usuEmail, this.#usuGenero, hash,  this.#usuNumero, id ];
-            const result = await client.query(sql, values);
+            if (this.#usuNome !== undefined) {
+                campos.push(`usu_nome = $${i++}`);
+                valores.push(this.#usuNome);
+            }
+
+            if (this.#usuEmail !== undefined) {
+                campos.push(`usu_email = $${i++}`);
+                valores.push(this.#usuEmail);
+            }
+
+            if (this.#usuGenero !== undefined) {
+                campos.push(`usu_genero = $${i++}`);
+                valores.push(this.#usuGenero);
+            }
+
+            if (this.#usuSenha !== undefined) {
+                const saltRounds = 10;
+                const hash = await bcrypt.hash(this.#usuSenha, saltRounds);
+
+                campos.push(`usu_genero = $${i++}`);
+                valores.push(hash);
+            }
+
+            if (this.#usuUrlImagem !== undefined) {
+                campos.push(`usu_url_imagem = $${i++}`);
+                valores.push(this.#usuUrlImagem);
+            }
+
+            if (this.#usuNumero !== undefined) {
+                campos.push(`usu_numero = $${i++}`);
+                valores.push(this.#usuNumero);
+            }
+
+            if (campos.length === 0) return false;
+
+            const sql = `
+                UPDATE tb_usuario
+                SET ${campos.join(", ")}
+                WHERE usu_id = $${i}
+            `;
+            valores.push(id);
+
+            const result = await client.query(sql, valores);
             return result;
         } finally {
             client.release();
         }
     }
-    
+
+    async alterarUserPerfil(id) {
+        const client = await pool.connect();
+
+        try {
+            let campos = [];
+            let valores = [];
+            let i = 1;
+
+            if (this.#usuNome !== undefined) {
+                campos.push(`usu_nome = $${i++}`);
+                valores.push(this.#usuNome);
+            }
+
+            if (this.#usuEmail !== undefined) {
+                campos.push(`usu_email = $${i++}`);
+                valores.push(this.#usuEmail);
+            }
+
+            if (this.#usuGenero !== undefined) {
+                campos.push(`usu_genero = $${i++}`);
+                valores.push(this.#usuGenero);
+            }
+
+            if (this.#usuUrlImagem !== undefined) {
+                campos.push(`usu_url_imagem = $${i++}`);
+                valores.push(this.#usuUrlImagem);
+            }
+
+            if (this.#usuNumero !== undefined) {
+                campos.push(`usu_numero = $${i++}`);
+                valores.push(this.#usuNumero);
+            }
+
+            if (campos.length === 0) return false;
+
+            const sql = `
+                UPDATE tb_usuario
+                SET ${campos.join(", ")}
+                WHERE usu_id = $${i}
+            `;
+            valores.push(id);
+
+            const result = await client.query(sql, valores);
+            return result.rowCount > 0;
+        } finally {
+            client.release();
+        }
+    }
 }

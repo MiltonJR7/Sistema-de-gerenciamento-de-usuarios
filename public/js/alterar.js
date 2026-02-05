@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
         const email = document.getElementById('email');
         const genero = document.getElementById('genero');
         const numero = document.getElementById('telefone');
+        const imagem = document.getElementById('avatarInput');
+
         const cleanNumber = numero.value.replace(/\D/g, "");
         const regexLetras = /^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:\s[A-Za-zÀ-ÖØ-öø-ÿ]+)*$/;
         const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -39,26 +41,23 @@ document.addEventListener('DOMContentLoaded', ()=> {
         if(isSubmitting) return;
         isSubmitting = true;
 
-        if(nome.value === "" || !regexLetras.test(nome.value)) { validar.push(nome); } else { nome.style.borderColor = "#f9fafb"; }
-        if(email.value === "" || !emailPattern.test(email.value)) { validar.push(email); } else { email.style.borderColor = "#f9fafb"; }
-        if(genero.value === "" || !regexLetras.test(genero.value)) { validar.push(genero); } else { genero.style.borderColor = "#f9fafb"; }
-        if(cleanNumber === "" || !regex.test(cleanNumber)) { validar.push(numero); } else { numero.style.borderColor = "#f9fafb"; }
+        if(!regexLetras.test(nome.value)) { validar.push(nome); } else { nome.style.borderColor = "#f9fafb"; }
+        if(!emailPattern.test(email.value)) { validar.push(email); } else { email.style.borderColor = "#f9fafb"; }
+        if(!regexLetras.test(genero.value)) { validar.push(genero); } else { genero.style.borderColor = "#f9fafb"; }
+        if(cleanNumber !== "" && !regex.test(cleanNumber)) { validar.push(numero); } else { numero.style.borderColor = "#f9fafb"; }
 
         if(validar.length === 0) {
+            const formData = new FormData();
 
-            let obj = {
-                nome: nome.value,
-                email: email.value,
-                genero: genero.value,
-                numero: cleanNumber
-            }
+            formData.append('nome', nome.value);
+            formData.append('email', email.value);
+            formData.append('genero', genero.value);
+            formData.append('cleanNumber', cleanNumber);
+            formData.append('imagem', imagem.files[0]);
 
             fetch('/profile/allData', {
                 method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(obj)
+                body: formData
             })
             .then((res)=> {
                 return res.json();

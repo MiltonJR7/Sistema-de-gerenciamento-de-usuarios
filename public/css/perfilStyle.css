@@ -107,20 +107,24 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background: transparent;
+
+    background: var(--color-blue-light);
+    color: white;
+
     border: none;
-    color: var(--color-primary);
+    padding: 6px 14px;
+    border-radius: 20px;
+
     font-size: 0.875rem;
     font-weight: 500;
+
     cursor: pointer;
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-md);
     transition: all 0.2s ease;
 }
 
 .perfil-change-photo:hover {
-    background: var(--color-gray-50);
-    color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    opacity: 0.9;
 }
 
 .perfil-info-list {

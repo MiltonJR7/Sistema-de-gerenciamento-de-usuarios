@@ -34,7 +34,13 @@
 
                 <div class="profile-menu">
                     <button class="icon-btn">
-                        <i class="far fa-user"></i>
+                        <% if(lista.usu_url_imagem) { %>
+                            <img src="/img/imageStorage/<%= lista.usu_url_imagem %>" alt="avatar">
+                        <% } else { %>
+                            <img id="avatarPreview"
+                            src="https://img.freepik.com/vetores-premium/icone-de-perfil-de-avatar-padrao-imagem-de-usuario-de-midia-social-icone-de-avatar-cinza-silhueta-de-perfil-em-branco-ilustracao-vetorial_561158-3407.jpg"
+                            alt="Foto do usuário">
+                        <% } %>
                     </button>
 
                     <div class="dropdown" role="menu" aria-label="Menu do perfil">

@@ -10,21 +10,22 @@
                 <div class="perfil-card">
                     <div class="perfil-avatar-section">
                         <div class="perfil-avatar">
-                            <img src="https://img.freepik.com/vetores-premium/icone-de-perfil-de-avatar-padrao-imagem-de-usuario-de-midia-social-icone-de-avatar-cinza-silhueta-de-perfil-em-branco-ilustracao-vetorial_561158-3407.jpg?semt=ais_hybrid&w=740&q=80"
-                                alt="Foto do usuário" />
+                            <% if(lista.usu_url_imagem) { %>
+                                <img id="avatarPreview"
+                                src="/img/imageStorage/<%= lista.usu_url_imagem %>" alt="avatar">
+                            <% } else { %>
+                                <img id="avatarPreview"
+                                src="https://img.freepik.com/vetores-premium/icone-de-perfil-de-avatar-padrao-imagem-de-usuario-de-midia-social-icone-de-avatar-cinza-silhueta-de-perfil-em-branco-ilustracao-vetorial_561158-3407.jpg"
+                                alt="Foto do usuário">"
+                            <% } %>
                         </div>
-                        <button class="perfil-change-photo" id="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path
-                                    d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z">
-                                </path>
-                                <circle cx="12" cy="13" r="3"></circle>  
-                            </svg>
+                        <button type="button" class="perfil-change-photo" id="btnTrocarFoto">
                             Alterar foto
                         </button>
+                        <input type="file" id="avatarInput" name="imagem" accept="image/*" hidden>
                     </div>
+
+
 
                     <div class="perfil-info-list">
                         <div class="perfil-info-item">
@@ -288,3 +289,22 @@
 <script src="/js/register.js"></script>
 <script src="/js/alterar.js"></script>
 <script src="/js/delete.js"></script>
+
+<script>
+    const btnTrocarFoto = document.getElementById("btnTrocarFoto");
+    const avatarInput = document.getElementById("avatarInput");
+    const avatarPreview = document.getElementById("avatarPreview");
+
+    btnTrocarFoto.addEventListener("click", () => avatarInput.click());
+
+    avatarInput.addEventListener("change", () => {
+        const file = avatarInput.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = e => {
+            avatarPreview.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+</script>
