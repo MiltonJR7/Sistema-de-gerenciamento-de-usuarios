@@ -1,76 +1,131 @@
-# Sistema de Gerenciamento de Usuários
+# 🛒 Sistema de E-commerce com Gerenciamento de Usuários
 
-## Descrição
+## 📄 Descrição
 
-Projeto Full Stack em desenvolvimento, criado com o objetivo de praticar e demonstrar conhecimentos em desenvolvimento web, arquitetura de aplicações e persistência de dados utilizando Node.js e PostgreSQL.
+Projeto **Full Stack** de **E-commerce** em desenvolvimento, criado com o objetivo de consolidar conhecimentos em desenvolvimento web, segurança, autenticação, arquitetura de aplicações e persistência de dados utilizando **Node.js**, **PostgreSQL** e tecnologias modernas de front-end.
 
-Atualmente, o projeto possui apenas as funcionalidades iniciais de autenticação implementadas, estando em constante evolução.
-
----
-
-## Status do Projeto
-
-🚧 **Em desenvolvimento**
-
-No momento, apenas parte do sistema está funcional.
+O sistema já conta com **autenticação segura**, **dashboard administrativo**, **gerenciamento de usuários, produtos e endereços**, além de **upload de imagens integrado à Cloudinary**, sendo hospedado de forma dinâmica na **Vercel**.
 
 ---
 
-## Funcionalidades
+## 🚧 Status do Projeto
 
-### Autenticação
-- Login de usuários ✅
-- Registro de usuários ✅
-- Criptografia com Bcrypt ✅
-- Autenticador com JWT ✅
-- Dashboard (Em desenvolvimento realizado somente front-end)
+🚧 **Em desenvolvimento ativo**
 
-### Gerenciamento de Usuários (planejado)
-- Listagem de usuários
-- Atualização de dados do usuário
-- Exclusão de usuários
-- Definição de perfil para controle
-
-### Funcionalidades Futuras
-- Validações completas de formulário
-- Controle de acesso
-- Interface aprimorada
+O sistema possui diversas funcionalidades completas e outras em constante evolução, principalmente relacionadas ao fluxo completo de e-commerce.
 
 ---
 
-## Tecnologias Utilizadas
+## ⚙️ Funcionalidades Implementadas
+
+### 🔐 Autenticação e Segurança
+- Registro de usuários ✅  
+- Login de usuários ✅  
+- Criptografia de senhas com **Bcrypt** ✅  
+- Autenticação com **JWT (JSON Web Token)** ✅  
+- Proteção de rotas via **Middleware** ✅  
+- Tokens armazenados de forma segura ✅  
+
+---
+
+### 👤 Usuários
+- Listagem de usuários no dashboard ✅  
+- Atualização de dados do usuário ✅  
+- Exclusão de usuários ✅  
+- Tela de perfil do usuário ✅  
+- Finalização de cadastro com:
+  - Telefone  
+  - Endereço  
+  - Upload de imagem de perfil  
+
+---
+
+### 🏠 Endereços
+- Listagem de endereços vinculados aos usuários ✅  
+- Exclusão de endereços ✅  
+
+---
+
+### 📦 Produtos
+- Listagem de produtos no dashboard ✅  
+- Cadastro de produtos ✅  
+- Atualização de produtos ✅  
+- Exclusão de produtos ✅  
+
+---
+
+### 📊 Dashboard Administrativo
+- Página de dashboard ✅  
+- Visualização de:
+  - Usuários  
+  - Produtos  
+  - Endereços  
+- Ações de **editar** e **deletar** registros ✅  
+
+---
+
+### ☁️ Upload e Deploy
+- Upload de imagens utilizando **Cloudinary** ✅  
+- Integração preparada para ambiente serverless (**Vercel**) ✅  
+
+---
+
+## 🚀 Funcionalidades Planejadas / Em Desenvolvimento
+
+- Carrinho de compras  
+- Sistema de pedidos  
+- Finalização de compra  
+- Integração com meios de pagamento  
+- Controle de permissões (admin / usuário)  
+- Validações avançadas de formulários  
+- Melhorias na interface e experiência do usuário (UI/UX)  
+
+---
+
+## 🧰 Tecnologias Utilizadas
 
 ### Back-end
-- Node.js
-- Express
-- PostgreSQL
-- JWT
-- Bcrypt
+- Node.js  
+- Express  
+- PostgreSQL  
+- JWT  
+- Bcrypt  
+
+---
 
 ### Front-end
-- EJS
-- CSS
-- JavaScript
-
-### Outras Ferramentas
-- Git
-- GitHub
+- EJS  
+- CSS  
+- JavaScript  
 
 ---
 
-## Organização do Projeto
-
-O projeto segue uma estrutura organizada, com separação de responsabilidades para facilitar a manutenção e a evolução do código.
-
-- **Rotas**: definição dos endpoints da aplicação  
-- **Controllers**: lógica de negócio  
-- **Modelos**: estrutura e comunicação com o banco de dados  
-- **Configurações**: conexão com banco e variáveis de ambiente  
-
-Essa organização contribui para um código mais limpo, legível e escalável.
+### Infraestrutura e Serviços
+- Cloudinary (upload de imagens)  
+- Vercel (deploy)  
 
 ---
 
-## Objetivo do Projeto
+### Ferramentas
+- Git  
+- GitHub  
 
-Este projeto tem como finalidade o aprendizado prático e a construção de portfólio, reforçando conceitos fundamentais de desenvolvimento Full Stack, autenticação de usuários e integração com banco de dados relacional.
+---
+
+## 🗂️ Organização do Projeto
+
+O projeto segue uma arquitetura organizada e escalável, baseada na separação de responsabilidades:
+
+- **Routes**: definição das rotas da aplicação  
+- **Controllers**: regras de negócio  
+- **Models**: comunicação com o banco de dados  
+- **Middlewares**: autenticação e proteção de rotas  
+- **Config**: variáveis de ambiente e conexão com o banco  
+
+Essa estrutura facilita a manutenção, escalabilidade e evolução do sistema.
+
+---
+
+## 🎯 Objetivo do Projeto
+
+Este projeto tem como objetivo o **aprendizado prático**, o fortalecimento de conceitos de **Full Stack**, **segurança**, **autenticação**, **integração com banco de dados relacional** e a construção de um **e-commerce completo para portfólio profissional**.
