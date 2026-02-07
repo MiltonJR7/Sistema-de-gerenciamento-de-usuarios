@@ -1,8 +1,10 @@
 
 import AddressModel from "../models/addressModel.js";
 import CategoriaModel from "../models/categoriaModel.js";
+import EstoqueModel from "../models/estoqueModel.js";
 import ProductModel from "../models/productModel.js";
 import UserModel from "../models/userModel.js";
+import ProductService from "../services/productService.js";
 import { uploadToCloudinary } from "../utils/cloudinaryUpload.js";
 
 export default class DashboardController {
@@ -71,7 +73,6 @@ export default class DashboardController {
     async dashboardUserServiceView(req, res) {
         
         try {
-
             const banco = new UserModel();
             const bancoAddress = new AddressModel();
 
@@ -110,14 +111,13 @@ export default class DashboardController {
         try {
             let idUserServices = req.params.id;
             const {nome, email, genero, senha, cleanNumber} = req.body;
-            console.log(req.body)
             if(!idUserServices) return res.status(500).json({ mensage: "Erro params inexistente ou invalido!", ok: false }); 
 
             const banco = new UserModel();
             if(nome) banco.usuNome = nome;
             if(email) banco.usuEmail = email;
             if(genero) banco.usuGenero = genero;
-            if(senha) banco.usuSenha = nome;
+            if(senha) banco.usuSenha = senha;
             if(cleanNumber) banco.usuNumero = cleanNumber;
 
             if (req.file) {
@@ -163,23 +163,19 @@ export default class DashboardController {
     async dashboardProductServicesNewProduct(req, res) {
 
         try {
+            if(!req.file || !req.body.nome || !req.body.preco  || !req.body.codigoBarras || !req.body.status || !req.body.categoria || req.body.estoque === null) return res.status(400).json({ ok: false });
 
-            const { nome, descricao, preco, codigoBarras, status, categoria } = req.body;
-            const imagem = req.file.filename;
-            if(!nome || !preco || !codigoBarras || !status || !categoria) return res.status(400).json({ ok: false });
+            const uploaded = await uploadToCloudinary(req.file.buffer, "products");
+            const imagem = uploaded.secure_url;
 
-            const banco = new ProductModel();
-            banco.proNome = nome;
-            banco.proDescricao = descricao;
-            banco.proPreco = preco;
-            banco.proImagem = imagem;
-            banco.proCodigoBarras = codigoBarras;
-            banco.proStatus = status;
-            banco.catID = categoria;
-
-            const result = await banco.cadastrarProduto();
-            if(result) return res.status(200).json({ ok: true });
-            return res.status(500).json({ ok: false });
+            const banco = new ProductService();
+            const proID = await banco.joinProductInStock(req.body, imagem);
+            
+            res.status(201).json({
+                sucesso: true,
+                pro_id: proID,
+                ok: true
+            });
         } catch(err) {
             console.log(err);
             return res.status(400).json({ err: "Erro na controladora com status 400 - possivelmente erro com banco de dados. --- dashboardProductServicesNewProduct ---" });
@@ -189,7 +185,6 @@ export default class DashboardController {
     async dashboardProductsDelete(req, res) {
 
         try {
-
             const id = req.body.obj;
 
             if(!id) return res.status(400).json({ ok: false });
@@ -202,6 +197,38 @@ export default class DashboardController {
         } catch(err) {
             console.log(err);
             return res.status(400).json({ err: "Erro na controladora com status 400 - possivelmente erro com banco de dados. --- dashboardProductsDelete ---" });
+        }
+    }
+
+    async dashboardProductsAlterView(req, res) {
+
+        try {
+            const id = req.params.id;
+            const banco = new ProductModel();
+            const bancoCategoria = new CategoriaModel();
+            const bancoEstoque = new EstoqueModel();
+
+            const lista = await banco.listarProdutosPorID(id);
+            const listaCat = await bancoCategoria.listarCategorias();
+            const listaEstoque = await bancoEstoque.procurarEstoqueID(id);
+
+            if(lista) return res.render('Dashboard/productServicesAlterPage', { layout: "Dashboard/layoutDashboard", lista: lista, listaCat: listaCat, listaEstoque: listaEstoque });
+            return res.status(500).json({ err: "Erro na lista retornada do banco!" })
+        } catch(err) {
+            console.log(err);
+            return res.status(400).json({ err: "Erro na controladora com status 400 - possivelmente erro com banco de dados. --- dashboardProductsAlterView ---" });
+        }
+    }
+
+    async dashboardProductsAlter(req, res) {
+
+        try {
+            const id = req.params.id;
+            
+
+        } catch(err) {
+            console.log(err);
+            return res.status(400).json({ err: "Erro na controladora com status 400 - possivelmente erro com banco de dados. --- dashboardProductsAlter ---" });
         }
     }
 }

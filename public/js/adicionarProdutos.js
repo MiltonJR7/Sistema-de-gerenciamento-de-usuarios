@@ -6,25 +6,30 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
     btn.addEventListener('click', addNewProduct);
     btnLimpar.addEventListener('click', limparImputs);
+    let isSubmitting = false;
 
     function addNewProduct() {
 
         const nome = document.getElementById('nome');
-        let descricao = document.getElementById('descricao');
+        const descricao = document.getElementById('descricao');
         const preco = document.getElementById('preco');
         const codigoBarras = document.getElementById('codigoBarras');
         const status = document.getElementById('status');
         const categoria = document.getElementById('categoria');
         const imagem = document.getElementById('prodimgInput');
-        // const estoque = document.getElementById('estoque'); -- ajustar banco de dados de estoque
+        const estoque = document.getElementById('estoque');
+        const estoqueMin = document.getElementById('estoqueMin');
+
+        if (isSubmitting) return;
+        isSubmitting = true;
         let validar = [];
 
-        if(nome.value === "") { validar.push(nome); } else { nome.style.borderColor = "#50678a"; }
-        if(preco.value === "") { validar.push(preco); } else { preco.style.borderColor = "#50678a"; }
-        if(codigoBarras.value === "") { validar.push(codigoBarras); } else { codigoBarras.style.borderColor = "#50678a"; }
-        if(status.value === "") { validar.push(status); } else { status.style.borderColor = "#50678a"; }
-        if(categoria.value === "") { validar.push(categoria); } else { categoria.style.borderColor = "#50678a"; }
-        // if(estoque.value === "") { validar.push(estoque); } else { estoque.style.borderColor = "#D1D5DB"; } -- ajustar banco de dados de estoque
+        if(nome.value === "") { validar.push(nome); } else { nome.style.borderColor = "#D1D5DB"; }
+        if(preco.value === "") { validar.push(preco); } else { preco.style.borderColor = "#D1D5DB"; }
+        if(codigoBarras.value === "") { validar.push(codigoBarras); } else { codigoBarras.style.borderColor = "#D1D5DB"; }
+        if(status.value === "") { validar.push(status); } else { status.style.borderColor = "#D1D5DB"; }
+        if(categoria.value === "") { validar.push(categoria); } else { categoria.style.borderColor = "#D1D5DB"; }
+        if(estoque.value === "") { validar.push(estoque); } else { estoque.style.borderColor = "#D1D5DB"; }
 
 
         if(validar.length === 0) {
@@ -37,6 +42,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
             formData.append("codigoBarras", codigoBarras.value);
             formData.append("status", status.value);
             formData.append("categoria", categoria.value);
+            formData.append("estoque", estoque.value);
+            formData.append("estoqueMin", estoqueMin.value);
             if(imagem) formData.append("imagem", imagem.files[0]);
 
             fetch('/dashboard/products/add-new', {
@@ -53,11 +60,15 @@ document.addEventListener('DOMContentLoaded', ()=> {
                     alert('erro em cadastro de produto!');
                 }
             })
+            .finally(() => {
+                isSubmitting = false;
+            });
 
         } else {
             for(let i = 0; i < validar.length; i++) {
                 validar[i].style.borderColor = "red";
             }
+            isSubmitting = false;
         }
     }
 
@@ -68,7 +79,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         const codigoBarras = document.getElementById('codigoBarras');
         const status = document.getElementById('status');
         const categoria = document.getElementById('categoria');
-        // const estoque = document.getElementById('estoque');
+        const estoque = document.getElementById('estoque');
 
         nome.value = "";
         nome.style.borderColor = "#D1D5DB";
@@ -88,7 +99,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         categoria.value = "";
         categoria.style.borderColor = "#D1D5DB";
 
-        // estoque.value = "";
-        // estoque.style.borderColor = "#D1D5DB";
+        estoque.value = "";
+        estoque.style.borderColor = "#D1D5DB";
     }
 })

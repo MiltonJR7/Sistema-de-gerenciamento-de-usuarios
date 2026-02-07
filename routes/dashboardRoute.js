@@ -21,4 +21,10 @@ route.delete('/products/delete', authAdmin, controller.dashboardProductsDelete);
 route.get('/user/:id', authAdmin, controller.dashboardUserServiceView);
 route.put('/user/:id', authAdmin, upload.single('imagem'), controller.dashboardUserServiceAlter);
 route.delete('/user/delete/:id', authAdmin, controller.dashboardUserServiceDelete);
+
+route.get('/products/:id', authAdmin, controller.dashboardProductsAlterView);
+route.put('/products/:id', authAdmin, upload.single('imagem'), controller.dashboardProductsAlter);
+//route.delete('/products/delete/:id', authAdmin, controller.das)
+
+
 export default route;

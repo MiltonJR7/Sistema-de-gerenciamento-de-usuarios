@@ -26,7 +26,35 @@ export default class EstoqueModel {
         this.#estMinimo = estMinimo;
     }
 
-    async salvarEstoqueProduto() {
+    async criarEstoqueInicial(client, proID, dados) {
 
+        const sql = `
+            insert into tb_estoque (pro_id, est_quantidade, est_minimo) 
+            values ($1, $2, $3)
+        `;
+
+        const values = [
+            proID,
+            dados.estoque,
+            dados.estoqueMin
+        ]
+        
+        await client.query(sql, values);
+    }
+
+    async procurarEstoqueID(id) {
+        const client = await pool.connect();
+
+        try {
+            const sql = "select * from tb_estoque where pro_id = $1";
+
+            const result = await client.query(sql, [id]);
+            const row = result.rows[0];
+
+            if(!row) return null;
+            return row;
+        } finally {
+            client.release();
+        }
     }
 }

@@ -201,8 +201,11 @@ export default class UserModel {
                 const saltRounds = 10;
                 const hash = await bcrypt.hash(this.#usuSenha, saltRounds);
 
-                campos.push(`usu_genero = $${i++}`);
+                campos.push(`usu_hash_senha = $${i++}`);
                 valores.push(hash);
+
+                console.log("senha: ", this.#usuSenha);
+                console.log("hash: ", hash)
             }
 
             if (this.#usuUrlImagem !== undefined) {

@@ -55,7 +55,7 @@ export default class ProductModel {
                 tb_produto.pro_codigo_barras,
                 tb_produto.pro_status,
                 tb_produto.pro_data_cadastro,
-                tb_categoria.cat_id
+                tb_categoria.cat_nome
                 from tb_produto
                 inner join tb_categoria on tb_produto.cat_id = tb_categoria.cat_id
             `;
@@ -75,7 +75,7 @@ export default class ProductModel {
                 produtos.proCodigoBarras = rows[i].pro_codigo_barras;
                 produtos.proStatus = rows[i].pro_status;
                 produtos.proDataCadastro = rows[i].pro_data_cadastro;
-                produtos.catID = rows[i].cat_id;
+                produtos.catNome = rows[i].cat_nome;
 
                 listaProdutos.push(produtos)
             }
@@ -86,22 +86,36 @@ export default class ProductModel {
         }
     }
 
-    async cadastrarProduto() {
-        const client = await pool.connect();
-        
-        try {
-            const sql = `
-                insert into tb_produto (pro_nome, pro_descricao, pro_preco, pro_imagem, pro_codigo_barras, pro_status, cat_id)
-                values ($1, $2, $3, $4, $5, $6, $7)
-                returning pro_nome, pro_preco, pro_imagem, pro_status, cat_id
-            `;
+    async cadastrarProduto(client, dados) {
+        const sql = `
+            insert into tb_produto (pro_nome, pro_descricao, pro_preco, pro_imagem, pro_codigo_barras, pro_status, cat_id)
+            values ($1, $2, $3, $4, $5, $6, $7)
+            returning pro_id, pro_nome, pro_preco, pro_imagem, pro_status, cat_id
+        `;
 
-            const values = [ this.#proNome, this.#proDescricao, this.#proPreco, this.#proImagem, this.#proCodigoBarras, this.#proStatus, this.#catID ];
-            const { rows } = await client.query(sql, values);
-            return rows[0] ?? null;
-        } finally {
-            client.release();
-        }
+        const values = [ 
+            dados.nome,
+            dados.descricao,
+            dados.preco,
+            dados.imagem,
+            dados.codigoBarras,
+            dados.status,
+            dados.categoria
+        ];
+
+        const { rows } = await client.query(sql, values);
+        const row = rows[0];
+
+        if (!row) return null;
+
+        return {
+            proID: row.pro_id,
+            proNome: row.pro_nome,
+            proPreco: row.pro_preco,
+            proImagem: row.pro_imagem,
+            proStatus: row.pro_status,
+            catID: row.cat_id
+        };
     }
 
     async deletarProduto(id) {
@@ -115,5 +129,36 @@ export default class ProductModel {
             client.release();
         }
     }
+
+    async listarProdutosPorID(id) {
+        const client = await pool.connect();
+
+        try {
+            const sql = `
+                select 
+                tb_produto.pro_id,
+                tb_produto.pro_nome,
+                tb_produto.pro_descricao,
+                tb_produto.pro_preco,
+                tb_produto.pro_imagem,
+                tb_produto.pro_codigo_barras,
+                tb_produto.pro_status,
+                tb_produto.pro_data_cadastro,
+                tb_categoria.cat_nome
+                from tb_produto
+                inner join tb_categoria on tb_produto.cat_id = tb_categoria.cat_id
+                where pro_id = $1
+            `;
+            const result = await client.query(sql, [id]);
+            const rows = result.rows[0];
+
+            if(!rows) return null;
+            return rows;
+        } finally {
+            client.release();
+        }
+    }
+
+    asycn 
 }
 

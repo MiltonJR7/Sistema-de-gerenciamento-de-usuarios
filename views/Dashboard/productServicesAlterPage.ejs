@@ -1,0 +1,182 @@
+<div class="perfil-page">
+    <div class="perfil-decorative-banner"></div>
+    <div class="perfil-container">
+        <div class="perfil-grid">
+            <aside class="perfil-card">
+                <div class="perfil-avatar-section">
+                    <div class="product-image">
+                        <% if (typeof lista !== "undefined" && lista && lista.pro_imagem) { %>
+                            <img src="<%= lista.pro_imagem %>" alt="Imagem do Produto" id="proImagemPreview">
+                        <% } else { %>
+                            <img src="/img/default_product.jpg" alt="Imagem do Produto" id="proImagemPreview">
+                        <% } %>
+                    </div>
+                    <button type="button" class="perfil-change-photo" id="btnTrocarFoto">
+                        Alterar imagem
+                    </button>
+                    <input type="file" id="proImagemInput" name="proImagem" accept="image/*" hidden>
+                </div>
+
+                <div class="perfil-info-list">
+                    <div class="perfil-info-item">
+                        <span class="perfil-info-label">ID do Produto</span>
+                        <div class="perfil-info-value"><%= lista.pro_id %></div>
+                    </div>
+
+                    <div class="perfil-info-item">
+                        <span class="perfil-info-label">Nome do Produto</span>
+                        <div class="perfil-info-value"><%= lista.pro_nome %></div>
+                    </div>
+
+                    <div class="perfil-info-item">
+                        <span class="perfil-info-label">Status</span>
+                        <div class="perfil-info-value">
+                            <% if(lista.pro_status === true) { %>
+                                <span class="productAtivo" style=" display: flex; align-items: center; text-align: center; height: 30px; justify-content: center;">ATIVO</span>
+                            <% } else { %>
+                                <span class="productInativo" style=" display: flex; align-items: center; text-align: center; height: 30px; justify-content: center;">INATIVO</span>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <div class="perfil-info-item">
+                        <span class="perfil-info-label">Categoria</span>
+                        <div class="perfil-info-value"><%= lista.cat_nome %></div>
+                    </div>
+                </div>
+
+                <a href="/dashboard" class="perfil-back-button">
+                    ← Voltar ao Dashboard
+                </a>
+            </aside>
+
+            <main class="perfil-card">
+                <div class="perfil-header">
+                    <h1 class="perfil-title">Editar Produto</h1>
+                    <p class="perfil-subtitle">Atualize as informações do produto.</p>
+                </div>
+
+                <div class="perfil-form">
+                    <div class="perfil-form-row">
+                        <div class="perfil-form-group">
+                            <label for="proNome" class="perfil-form-label">Nome do Produto</label>
+                            <input
+                                type="text"
+                                id="proNome"
+                                name="proNome"
+                                class="perfil-form-control"
+                                placeholder="Nome do produto"
+                                value="<%= lista.pro_nome %>"
+                            >
+                        </div>
+
+                        <div class="perfil-form-group">
+                            <label for="proPreco" class="perfil-form-label">Preço</label>
+                            <input
+                                type="number"
+                                step="0.01"
+                                id="proPreco"
+                                name="proPreco"
+                                class="perfil-form-control"
+                                placeholder="0.00"
+                                value="<%= lista.pro_preco %>"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="perfil-form-row">
+                        <div class="perfil-form-group">
+                            <label for="proCodigoBarras" class="perfil-form-label">Código de Barras</label>
+                            <input
+                                type="text"
+                                id="proCodigoBarras"
+                                name="proCodigoBarras"
+                                class="perfil-form-control"
+                                placeholder="Código de barras"
+                                value="<%= lista.pro_codigo_barras %>"
+                            >
+                        </div>
+
+                        <div class="perfil-form-group">
+                            <label for="proEstoque" class="perfil-form-label">Estoque</label>
+                            <input
+                                type="number" 
+                                id="estoque"
+                                name="proEstoque"
+                                class="perfil-form-control"
+                                placeholder="Quantidade em estoque"
+                                value="<%= listaEstoque.est_quantidade %>"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="perfil-form-row">
+                        <div class="perfil-form-group">
+                            <label for="proStatus" class="perfil-form-label">Status</label>
+                            <select id="proStatus" name="proStatus" class="perfil-form-control">
+                                <option value="ativo" <%= lista.pro_status === "ativo" ? "selected" : "" %>>Ativo</option>
+                                <option value="inativo" <%= lista.pro_status === "inativo" ? "selected" : "" %>>Inativo</option>
+                            </select>
+                        </div>
+
+                        <div class="perfil-form-group">
+                            <label for="proCategoria" class="perfil-form-label">Categoria</label>
+                            <select 
+                                name="categoria" 
+                                id="categoria"
+                                class="perfil-form-control"
+                            >
+                                <option id="<%= lista.catID %>"><%= lista.cat_nome %></option>
+                                <% for(let i = 0; i < listaCat.length; i++) { %>
+                                    <option id="<%= listaCat[i].catID %>"><%= listaCat[i].catNome %></option>
+                                <% } %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="perfil-form-row">
+                        <div class="perfil-form-group" style="grid-column: 1 / -1;">
+                            <label for="proDescricao" class="perfil-form-label">Descrição</label>
+                            <textarea
+                                id="proDescricao"
+                                name="proDescricao"
+                                class="perfil-form-control"
+                                placeholder="Descrição do produto"
+                                rows="4"
+                                style="resize: vertical;"
+                            ><%= lista.pro_descricao %></textarea>
+                        </div>
+                    </div>
+
+                    <div class="perfil-actions">
+                        <button class="btn btn-primary-soft" id="salvarAlteracao">
+                            Salvar Alterações
+                        </button>
+                        <button class="btn btn-outline-danger-soft btnDeletarServices" data-delete-product-edit-page="<%= lista.proID %>">
+                            Excluir Produto
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+<script>
+    const btnTrocarFoto = document.getElementById("btnTrocarFoto");
+    const proImagemInput = document.getElementById("proImagemInput");
+    const proImagemPreview = document.getElementById("proImagemPreview");
+
+    btnTrocarFoto.addEventListener("click", () => proImagemInput.click());
+
+    proImagemInput.addEventListener("change", () => {
+        const file = proImagemInput.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = e => {
+            proImagemPreview.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+</script>
