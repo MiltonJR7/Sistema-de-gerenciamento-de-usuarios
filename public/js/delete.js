@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', ()=> {
             const idAddressProfile = e.currentTarget.dataset.deleteAddressProfile;
             const idProduct = e.currentTarget.dataset.deleteProduct;
 
+            const parts = window.location.pathname.split("/");
+            const idParams = Number(parts[parts.length - 1]);
+
             let router = "";
             let id = "";
 
@@ -24,9 +27,12 @@ document.addEventListener('DOMContentLoaded', ()=> {
             } else if(idAddressProfile) {
                 router = `/profile/delete`;
                 id = idAddressProfile;
-            } else{
+            } else if(idProduct) {
                 router = `/dashboard/products/delete`;
                 id = idProduct;
+            } else {
+                router = `/dashboard/products/delete/${idParams}`;
+                id = idParams;
             }
 
             deletar(id, router);
@@ -51,7 +57,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
                 })
                 .then((corpo)=> {
                     if(corpo.ok) {
-                        if(window.location.pathname === `/dashboard/user/${id}`) { window.location.href = "/dashboard"; } else { window.location.reload(); }
+                        if(window.location.pathname === `/dashboard/user/${id}` || window.location.pathname === `/dashboard/products/${id}`) { window.location.href = "/dashboard"; } else { window.location.reload(); }
                     } else {
                         alert("Error na confirmação do corpo.");
                     }

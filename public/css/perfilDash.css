@@ -610,8 +610,8 @@ body[data-theme="dark"] .perfil-page {
 /* CARDS */
 body[data-theme="dark"] .perfil-card,
 body[data-theme="dark"] .perfil-section {
-    background: #373737 !important;
-    border: 1px solid #444 !important;
+    background: #373737;
+    border: 1px solid #444;
 }
 
 /* TEXTOS */
@@ -620,7 +620,7 @@ body[data-theme="dark"] .perfil-info-value,
 body[data-theme="dark"] .perfil-form-control,
 body[data-theme="dark"] .form-control,
 body[data-theme="dark"] .address-details p {
-    color: #F1F1F1 !important;
+    color: #F1F1F1;
 }
 
 body[data-theme="dark"] .perfil-subtitle,
@@ -628,59 +628,59 @@ body[data-theme="dark"] .perfil-info-label,
 body[data-theme="dark"] .perfil-form-label,
 body[data-theme="dark"] .form-label,
 body[data-theme="dark"] .address-mini {
-    color: #BDBDBD !important;
+    color: #BDBDBD;
 }
 
 /* INPUTS */
 body[data-theme="dark"] .perfil-form-control,
 body[data-theme="dark"] .form-control {
-    background: #2E2E2E !important;
-    border: 1px solid #555 !important;
+    background: #2E2E2E;
+    border: 1px solid #555;
 }
 
 body[data-theme="dark"] .perfil-form-control:focus,
 body[data-theme="dark"] .form-control:focus {
-    background: #2E2E2E !important;
-    border-color: #4DA3FF !important;
+    background: #2E2E2E;
+    border-color: #4DA3FF;
 }
 
 /* BOTÕES */
 body[data-theme="dark"] .btn-outline-soft {
-    border-color: #555 !important;
-    color: #F1F1F1 !important;
+    border-color: #555;
+    color: #F1F1F1;
 }
 
 body[data-theme="dark"] .btn-outline-soft:hover {
-    background: #4DA3FF !important;
-    color: #fff !important;
+    background: #4DA3FF;
+    color: #fff;
 }
 
 body[data-theme="dark"] .perfil-back-button {
-    border-color: #555 !important;
-    color: #F1F1F1 !important;
+    border-color: #555;
+    color: #F1F1F1;
 }
 
 body[data-theme="dark"] .perfil-back-button:hover {
-    background: #444 !important;
+    background: #444;
 }
 
 /* ADDRESS CARDS */
 body[data-theme="dark"] .address-card {
-    background: #373737 !important;
-    border: 1px solid #444 !important;
+    background: #373737;
+    border: 1px solid #444;
 }
 
 body[data-theme="dark"] .address-summary:hover {
-    background: #4d4d4d !important;
+    background: #4d4d4d;
 }
 
 body[data-theme="dark"] .address-details {
-    background: #2E2E2E !important;
-    border-top: 1px solid #444 !important;
+    background: #2E2E2E;
+    border-top: 1px solid #444;
 }
 
 body[data-theme="dark"] .address-toggle {
-    background: #444 !important;
-    color: #F1F1F1 !important;
+    background: #444;
+    color: #F1F1F1;
 }
 
