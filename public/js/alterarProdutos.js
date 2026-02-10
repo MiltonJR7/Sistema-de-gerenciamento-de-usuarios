@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         const imagem = document.getElementById('prodimgInput');
         const estoque = document.getElementById('estoque');
         const estoqueMin = document.getElementById('estoqueMin');
+        const subcategoria = document.getElementById('subcategoria');
 
         const parts = window.location.pathname.split("/");
         const id = Number(parts[parts.length - 1]);
@@ -32,8 +33,10 @@ document.addEventListener('DOMContentLoaded', ()=> {
         if(codigoBarras.value === "") { validar.push(codigoBarras); } else { codigoBarras.style.borderColor = "#D1D5DB"; }
         if(status.value === "") { validar.push(status); } else { status.style.borderColor = "#D1D5DB"; }
         if(categoria.value === "") { validar.push(categoria); } else { categoria.style.borderColor = "#D1D5DB"; }
+        if(subcategoria.value === "") { validar.push(subcategoria); } else { subcategoria.style.borderColor = "#D1D5DB"; }
         if(estoque.value === "") { validar.push(estoque); } else { estoque.style.borderColor = "#D1D5DB"; }
 
+        console.log(subcategoria.value)
 
         let statusBoolean = "";
         if(status.value === "ativo") statusBoolean = true; else statusBoolean = false;
@@ -47,6 +50,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             formData.append("codigoBarras", codigoBarras.value);
             formData.append("status", statusBoolean);
             formData.append("categoria", categoria.value);
+            formData.append("subcategoria", subcategoria.value);
             formData.append("estoque", estoque.value);
             formData.append("estoqueMin", estoqueMin.value);
             if(imagem) formData.append("imagem", imagem.files[0]);

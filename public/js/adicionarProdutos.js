@@ -19,20 +19,26 @@ document.addEventListener('DOMContentLoaded', ()=> {
         const imagem = document.getElementById('prodimgInput');
         const estoque = document.getElementById('estoque');
         const estoqueMin = document.getElementById('estoqueMin');
+        const subcategoria = document.getElementById('subcategoria');
 
         const precoLimpo = precoInicial.value;
         const preco = precoLimpo.replace(/\./g, '').replace(',', '.');
+        const regexNumeros = /^\d+$/
+
+        console.log(subcategoria.value)
 
         if (isSubmitting) return;
         isSubmitting = true;
         let validar = [];
 
         if(nome.value === "") { validar.push(nome); } else { nome.style.borderColor = "#D1D5DB"; }
-        if(precoInicial.value === "") { validar.push(precoInicial); } else { precoInicial.style.borderColor = "#D1D5DB"; }
-        if(codigoBarras.value === "") { validar.push(codigoBarras); } else { codigoBarras.style.borderColor = "#D1D5DB"; }
+        if(precoInicial.value === "" || preco.value < 0) { validar.push(precoInicial); } else { precoInicial.style.borderColor = "#D1D5DB"; }
+        if(codigoBarras.value === "" || codigoBarras.value < 0 || !regexNumeros.test(codigoBarras.value)) { validar.push(codigoBarras); } else { codigoBarras.style.borderColor = "#D1D5DB"; }
         if(status.value === "") { validar.push(status); } else { status.style.borderColor = "#D1D5DB"; }
         if(categoria.value === "") { validar.push(categoria); } else { categoria.style.borderColor = "#D1D5DB"; }
-        if(estoque.value === "") { validar.push(estoque); } else { estoque.style.borderColor = "#D1D5DB"; }
+        if(subcategoria.value === "") { validar.push(subcategoria); } else { subcategoria.style.borderColor = "#D1D5DB"; }
+        if(estoque.value === "" || estoque.value < 0 || !regexNumeros.test(estoque.value)) { validar.push(estoque); } else { estoque.style.borderColor = "#D1D5DB"; }
+        if(estoqueMin.value < 0 || !regexNumeros.test(estoqueMin.value)) { validar.push(estoqueMin); } else { estoqueMin.style.borderColor = "#D1D5DB"; }
 
 
         if(validar.length === 0) {
@@ -45,6 +51,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             formData.append("codigoBarras", codigoBarras.value);
             formData.append("status", status.value);
             formData.append("categoria", categoria.value);
+            formData.append("subcategoria", subcategoria.value);
             formData.append("estoque", estoque.value);
             formData.append("estoqueMin", estoqueMin.value);
             if(imagem) formData.append("imagem", imagem.files[0]);

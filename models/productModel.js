@@ -18,6 +18,7 @@ export default class ProductModel {
     #proStatus;
     #proDataCadastro;
     #catID;
+    #subID;
 
     get proID() { return this.#proID; } set proID(value) { this.#proID = value; }
     get proNome() { return this.#proNome; } set proNome(value) { this.#proNome = value; }
@@ -28,8 +29,9 @@ export default class ProductModel {
     get proStatus() { return this.#proStatus; } set proStatus(value) { this.#proStatus = value; }
     get proDataCadastro() { return this.#proDataCadastro; } set proDataCadastro(value) { this.#proDataCadastro = value; }
     get catID() { return this.#catID; } set catID(value) { this.#catID = value; }
+    get subID() { return this.#subID; } set subID(value) { this.#subID = value; }
 
-    constructor(proID, proNome, proDescricao, proPreco, proImagem, proCodigoBarras, proStatus, proDataCadastro, catID) {
+    constructor(proID, proNome, proDescricao, proPreco, proImagem, proCodigoBarras, proStatus, proDataCadastro, catID, subID) {
         this.#proID = proID;
         this.#proNome = proNome;
         this.#proDescricao = proDescricao;
@@ -39,6 +41,7 @@ export default class ProductModel {
         this.#proStatus = proStatus;
         this.#proDataCadastro = proDataCadastro;
         this.#catID = catID;
+        this.#subID = subID;
     }
 
     async listarProdutos() {
@@ -88,8 +91,8 @@ export default class ProductModel {
 
     async cadastrarProduto(client, dados) {
         const sql = `
-            insert into tb_produto (pro_nome, pro_descricao, pro_preco, pro_imagem, pro_codigo_barras, pro_status, cat_id)
-            values ($1, $2, $3, $4, $5, $6, $7)
+            insert into tb_produto (pro_nome, pro_descricao, pro_preco, pro_imagem, pro_codigo_barras, pro_status, cat_id, sub_id)
+            values ($1, $2, $3, $4, $5, $6, $7, $8)
             returning pro_id, pro_nome, pro_preco, pro_imagem, pro_status, cat_id
         `;
 
@@ -100,7 +103,8 @@ export default class ProductModel {
             dados.imagem,
             dados.codigoBarras,
             dados.status,
-            dados.categoria
+            dados.categoria,
+            dados.subcategoria
         ];
 
         const { rows } = await client.query(sql, values);
@@ -144,6 +148,7 @@ export default class ProductModel {
                 tb_produto.pro_codigo_barras,
                 tb_produto.pro_status,
                 tb_produto.pro_data_cadastro,
+                tb_produto.cat_id,
                 tb_categoria.cat_nome
                 from tb_produto
                 inner join tb_categoria on tb_produto.cat_id = tb_categoria.cat_id
@@ -168,8 +173,9 @@ export default class ProductModel {
             pro_imagem = $4,
             pro_codigo_barras = $5,
             pro_status = $6,
-            cat_id = $7
-            where pro_id = $8
+            cat_id = $7,
+            sub_id = $8
+            where pro_id = $9
         `;
 
         const values = [ 
@@ -180,6 +186,7 @@ export default class ProductModel {
             dados.codigoBarras,
             dados.status,
             dados.categoria,
+            dados.subcategoria,
             id
         ];
 

@@ -167,7 +167,7 @@ export default class DashboardController {
     async dashboardProductServicesNewProduct(req, res) {
 
         try {
-            if(!req.file || !req.body.nome || !req.body.preco  || !req.body.codigoBarras || !req.body.status || !req.body.categoria || req.body.estoque === null) return res.status(400).json({ ok: false });
+            if(!req.file || !req.body.nome || !req.body.preco  || !req.body.codigoBarras || !req.body.status || !req.body.categoria || !req.body.subcategoria || req.body.estoque === null) return res.status(400).json({ ok: false });
 
             const uploaded = await uploadToCloudinary(req.file.buffer, "products");
             const imagem = uploaded.secure_url;
@@ -233,7 +233,7 @@ export default class DashboardController {
             let imagem = "";
             let idCategoria = "";
 
-            if(!req.body.nome || !req.body.preco  || !req.body.codigoBarras || !req.body.status || !req.body.categoria || req.body.estoque === null) return res.status(400).json({ ok: false });
+            if(!req.body.nome || !req.body.preco  || !req.body.codigoBarras || !req.body.status || !req.body.categoria || !req.body.subcategoria || req.body.estoque === null) return res.status(400).json({ ok: false });
             
             if(req.file) {
                 const uploaded = await uploadToCloudinary(req.file.buffer, "products");

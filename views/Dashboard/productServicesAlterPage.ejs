@@ -145,9 +145,9 @@
                                 id="categoria"
                                 class="perfil-form-control"
                             >
-                                <option id="<%= lista.catID %>"><%= lista.catNome %></option>
+                                <option value="<%= lista.cat_id %>" selected><%= lista.cat_nome %></option>
                                 <% for(let i = 0; i < listaCat.length; i++) { %>
-                                    <option id="<%= listaCat[i].catID %>" data-alter-cat-id=""><%= listaCat[i].catNome %></option>
+                                    <option value="<%= listaCat[i].catID %>"><%= listaCat[i].catNome %></option>
                                 <% } %>
                             </select>
                         </div>
@@ -158,10 +158,8 @@
                             </label>
                             <select id="subcategoria" name="subcategoria" class="perfil-form-control">
                                 <% for(let i = 0; i < listaSubcateg.length; i++) { %>
-                                    <% console.log(lista.cat_id); %>
-                                    <% console.log(listaSubcateg[i].catID); %>
-                                    <% if(lista.catID === listaSubcateg[i].catID) { %>
-                                        <option value="<listaSubcateg[i].subID>"><%= listaSubcateg[i].subNome %></option>
+                                    <% if(lista.cat_id === listaSubcateg[i].catID) { %>
+                                        <option value="<%= listaSubcateg[i].subID %>"><%= listaSubcateg[i].subNome %></option>
                                     <% } %>
                                 <% } %>
                             </select>
@@ -194,7 +192,11 @@
             </main>
         </div>
     </div>
+    <script type="application/json" id="data-subcats">
+        <%- JSON.stringify(listaSubcateg) %>
+    </script>
 </div>
+
 
 <script>
     const btnTrocarFoto = document.getElementById("btnTrocarFoto");
