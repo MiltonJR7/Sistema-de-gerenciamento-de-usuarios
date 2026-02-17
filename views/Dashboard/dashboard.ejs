@@ -107,7 +107,7 @@
                             <% } %>
                         </div><hr style="margin-bottom: 10px; background-color: rgba(124, 124, 124, 0.623);">
                         <div class="action-buttons">
-                            <button class="btn btn-edit" aria-label="Editar">Editar</button>
+                            <a href="/dashboard/user/<%= lista[i].usuID %>" class="btn btn-edit" aria-label="Editar" data-delete-user="<%= lista[i].usuID %>">Editar</a>
                             <button class="btn btn-delete btnDeletar" aria-label="Excluir" data-delete-user="<%= lista[i].usuID %>">Deletar</button>
                         </div>
                     </div> 
