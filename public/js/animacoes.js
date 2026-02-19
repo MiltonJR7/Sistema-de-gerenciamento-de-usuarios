@@ -34,15 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-document.addEventListener('click', function (e) {
-    const sidebar = document.getElementById('sidebar');
-    const menuToggle = document.getElementById('menuToggle');
-
-    if (!sidebar.contains(e.target) && !menuToggle.contains(e.target) && window.innerWidth <= 768) {
-        sidebar.classList.remove('open');
-    }
-});
-
 document.addEventListener('DOMContentLoaded', ()=> {
     const savedTheme = localStorage.getItem("theme") || "light";
     let banner1 = document.getElementById('banner1');

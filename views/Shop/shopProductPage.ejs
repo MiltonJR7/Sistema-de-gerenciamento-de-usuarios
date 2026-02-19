@@ -16,7 +16,7 @@
                         </svg>
                         Voltar
                     </a>
-                    <div class="product-image-container">
+                    <div class="product-image-container" id="imgProduct" data-imagem-product="<%= listaProduct.pro_imagem %>">
                         <img src="<%= listaProduct.pro_imagem %>"
                             alt="<%= listaProduct.cat_nome %>" class="product-image" />
                     </div>
@@ -24,9 +24,7 @@
 
                 <!-- Informações do Produto -->
                 <div class="col-lg-6">
-                    <div class="product-info">
-
-                        <h1 class="product-title"><%= listaProduct.pro_nome %></h1>
+                        <h1 class="product-title" id="nomeProduto" data-nome-product="<%= listaProduct.pro_nome %>"><%= listaProduct.pro_nome %></h1>
 
                         <div class="product-rating">
                             <div class="stars">
@@ -49,7 +47,7 @@
                                         currency: "BRL"
                                     }) %>
                                 </span> 
-                                <span class="price-current">
+                                <span class="price-current" id="precoProduto" data-preco-product="<%= listaProduct.pro_preco %>">
                                     <%= Number(listaProduct.pro_preco).toLocaleString("pt-BR", {
                                         style: "currency",
                                         currency: "BRL"
@@ -81,7 +79,7 @@
                         </div>
 
                         <div class="product-actions">
-                            <button class="btn-add-cart">
+                            <button class="btn-add-cart" id="btnAddCart">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
                                     <circle cx="9" cy="21" r="1"></circle>
