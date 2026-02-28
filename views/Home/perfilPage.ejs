@@ -315,31 +315,56 @@
                                         <div id="<%= index %>" class="address-details">
                                             <div class="detail-row">
                                                 <span class="detail-label">Rua:</span>
-                                                <span class="detail-value"><%= endereco.endLogradouro %></span>
+                                                <span class="detail-value view-mode"><%= endereco.endLogradouro %></span>
+                                                <input type="text" class="form-control edit-mode d-none" name="logradouro" placeholder="Rua, Avenida, etc" id="inputRua">
                                             </div>
                                             <div class="detail-row">
                                                 <span class="detail-label">Complemento:</span>
-                                                <span class="detail-value"><%= endereco.endComplemento %></span>
+                                                <span class="detail-value view-mode"><%= endereco.endComplemento %></span>
+                                                <input type="text" class="form-control edit-mode d-none" name="complemento" placeholder="Apto, Bloco, Casa, etc" id="inputComplemento">
                                             </div>
                                             <div class="detail-row">
                                                 <span class="detail-label">Bairro:</span>
-                                                <span class="detail-value"><%= endereco.endBairro %></span>
+                                                <span class="detail-value view-mode"><%= endereco.endBairro %></span>
+                                                <input type="text" class="form-control edit-mode d-none" name="bairro" placeholder="Seu bairro" id="inputBairro">
                                             </div>
                                             <div class="detail-row">
                                                 <span class="detail-label">Cidade:</span>
-                                                <span class="detail-value"><%= endereco.endCidade %></span>
+                                                <span class="detail-value view-mode"><%= endereco.endCidade %></span>
+                                                <input type="text" class="form-control edit-mode d-none" name="cidade" placeholder="Sua cidade" id="inputCidade">
                                             </div>
                                             <div class="detail-row">
                                                 <span class="detail-label">CEP:</span>
-                                                <span class="detail-value"><%= endereco.endCep %></span>
+                                                <span class="detail-value view-mode"><%= endereco.endCep %></span>
+                                                <input type="text" class="form-control edit-mode d-none" id="inputCep" name="cep" placeholder="00000-000" maxlength="8">
                                             </div>
-                                            <button class="btn-remove btnDeletar" data-delete-address="<%= endereco.endID %>" id="btnDeletar">
-                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                                    <polyline points="3 6 5 6 21 6"/>
-                                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                                                </svg>
-                                                Remover Endereço
-                                            </button>
+                                            <div class="detail-row">
+                                                <span class="detail-label">Numero:</span>
+                                                <span class="detail-value view-mode"><%= endereco.endNumero %></span>
+                                                <input type="text" class="form-control edit-mode d-none" name="numero" placeholder="Ex, 123, 12A" id="inputNumero">
+                                            </div>
+                                            <div class="detail-row">
+                                                <span class="detail-label">Estado:</span>
+                                                <span class="detail-value view-mode"><%= endereco.endEstado %></span>
+                                                <input type="text" class="form-control edit-mode d-none" name="estado" placeholder="SP" id="inputEstado" maxlength="2">
+                                            </div>
+                                            <div class="address-actions">
+                                                <button class="btn-primary btn-edit">
+                                                    Editar
+                                                </button>
+
+                                                <button class="btn-remove btnDeletar" data-delete-address="<%= endereco.endID %>" id="btnDeletar">
+                                                    Remover Endereço
+                                                </button>
+
+                                                <button class="btn-secondary btn-save d-none">
+                                                    Salvar
+                                                </button>
+
+                                                <button class="btn-cancel d-none">
+                                                    Cancelar
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 <% } %>
@@ -400,6 +425,59 @@
                 details.classList.add("show");
                 button.classList.add("active");
             }
+        });
+    });
+
+    document.querySelectorAll(".address-card").forEach(card => {
+
+        const btnEdit = card.querySelector(".btn-edit");
+        const btnSave = card.querySelector(".btn-save");
+        const btnRemove = card.querySelector(".btnDeletar");
+        const btnCancel = card.querySelector(".btn-cancel");
+
+        const views = card.querySelectorAll(".view-mode");
+        const inputs = card.querySelectorAll(".edit-mode");
+
+        btnEdit.addEventListener("click", () => {
+
+            views.forEach(v => v.classList.add("d-none"));
+            inputs.forEach(i => i.classList.remove("d-none"));
+
+            btnEdit.classList.add("d-none");
+            btnRemove.classList.add("d-none");
+
+            btnSave.classList.remove("d-none");
+            btnCancel.classList.remove("d-none");
+
+        });
+
+        btnSave.addEventListener("click", () => {
+
+            inputs.forEach((input, index) => {
+                views[index].textContent = input.value;
+            });
+
+            views.forEach(v => v.classList.remove("d-none"));
+            inputs.forEach(i => i.classList.add("d-none"));
+
+            btnEdit.classList.remove("d-none");
+            btnRemove.classList.remove("d-none");
+
+            btnSave.classList.add("d-none");
+            btnCancel.classList.add("d-none");
+
+        });
+
+        btnCancel.addEventListener("click", () => {
+
+            views.forEach(v => v.classList.remove("d-none"));
+            inputs.forEach(i => i.classList.add("d-none"));
+
+            btnEdit.classList.remove("d-none");
+            btnRemove.classList.remove("d-none");
+
+            btnSave.classList.add("d-none");
+            btnCancel.classList.add("d-none");
         });
     });
 </script>

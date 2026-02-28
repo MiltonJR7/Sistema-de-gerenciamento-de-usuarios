@@ -858,3 +858,33 @@ input[type="file"] {
     background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
 }
 
+.address-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.address-actions button {
+    flex: 1;
+    width: 50%;
+    padding: 10px 20px;
+    font-size: 14px;
+    gap: 8px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    transition: var(--transition);
+    border-radius: var(--radius-sm);
+}
+
+.btn-cancel {
+    background: #e5e7eb;
+    border: none;
+    color: #111;
+}
+
+.btn-cancel:hover {
+    background: #d1d5db;
+}

@@ -129,6 +129,21 @@ export default class HomeController {
         const listaOutros = await banco.listarProdutos();
         const listaProduct = await banco.listarProdutosPorID(idProduto);
 
-        res.render('Shop/shopProductPage.ejs', { user: id, perfil: perID, layout: 'layout', listaProduct: listaProduct, listaOutros: listaOutros });
+        res.render('Shop/shopProductPage', { user: id, perfil: perID, layout: 'layout', listaProduct: listaProduct, listaOutros: listaOutros });
+    }
+
+    async checkoutView(req, res) {
+        let id = null;
+        let perID = null;
+
+        if(req.user) id = req.user.id;
+        if(req.user) perID = req.user.perID;
+
+        const banco = new UserModel();
+        const bancoEndereco = new AddressModel();
+        const lista = await banco.listarUsuarioPeloID(id);
+        const listaAddress = await bancoEndereco.listarEnderecos(id);
+
+        res.render('Shop/finalizarCompra', { layout: 'layout', user: id, perfil: perID, lista: lista, listaAddress: listaAddress });
     }
 }

@@ -323,6 +323,7 @@ body[data-theme="dark"] {
     gap:0.5rem;
     width:100%;
     transition: var(--carrinho-transition);
+    text-decoration: none;
 }
 
 .carrinho-continuar {

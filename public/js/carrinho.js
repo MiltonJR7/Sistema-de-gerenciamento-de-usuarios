@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const imagemElemento = document.getElementById('imgProduct');
     const estrutura = document.getElementById('estruturaCompleta');
     const estruturaPrecoTotal = document.getElementById('precoFinal');
+    const abrirCarrinho = document.getElementById('abrirCarrinho');
+    const listaItens = document.getElementById('summary-items');
 
     let nomeProduto = "";
     let precoProduto = 0;
@@ -104,6 +106,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 })}
             </p>
         `;
+
+        const carrinhoStorage = localStorage.getItem('carrinho');
+        let totalItens = 0;
+
+        if(carrinhoStorage) {
+            const carrinho = JSON.parse(carrinhoStorage);
+            totalItens = Object.keys(carrinho).length
+        }
+
+        const contadorCarrinho = document.createElement('span');
+        contadorCarrinho.textContent = totalItens;
+        contadorCarrinho.classList.add('carrinho-badge');
+        abrirCarrinho.appendChild(contadorCarrinho);
     }
 
     if (estrutura) {
